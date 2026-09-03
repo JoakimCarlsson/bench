@@ -2,10 +2,17 @@
 const std = @import("std");
 const harness = @import("harness.zig");
 
-const Dda = @import("dda.zig");
-const Flood = @import("flood.zig");
-const Solve = @import("solve.zig");
-const SlotMap = @import("slotmap.zig");
+const cases = .{
+    @import("dda.zig"),
+    @import("flood.zig"),
+    @import("surface.zig"),
+    @import("sweep.zig"),
+    @import("solve.zig"),
+    @import("integrate.zig"),
+    @import("slotmap.zig"),
+    @import("chunkmap.zig"),
+    @import("sort.zig"),
+};
 
 pub fn main(init: std.process.Init.Minimal) !u8 {
     const gpa = std.heap.smp_allocator;
@@ -27,10 +34,7 @@ pub fn main(init: std.process.Init.Minimal) !u8 {
         return 1;
     }
 
-    try harness.runCase(Dda, gpa, io, reps, warmup);
-    try harness.runCase(Flood, gpa, io, reps, warmup);
-    try harness.runCase(Solve, gpa, io, reps, warmup);
-    try harness.runCase(SlotMap, gpa, io, reps, warmup);
+    inline for (cases) |Case| try harness.runCase(Case, gpa, io, reps, warmup);
     return 0;
 }
 

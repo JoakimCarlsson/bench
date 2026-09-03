@@ -1,13 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "chunkmap.h"
 #include "dda.h"
 #include "flood.h"
 #include "harness.h"
+#include "integrate.h"
 #include "slotmap.h"
 #include "solve.h"
+#include "sort.h"
+#include "surface.h"
+#include "sweep.h"
 
-static const Case* const cases[] = { &dda_case, &flood_case, &solve_case, &slotmap_case };
+static const Case* const cases[] = {
+    &dda_case,     &flood_case,   &surface_case, &sweep_case, &solve_case,
+    &integrate_case, &slotmap_case, &chunkmap_case, &sort_case,
+};
 
 int main(int argc, char** argv) {
     int reps = argc > 1 ? atoi(argv[1]) : 10;
