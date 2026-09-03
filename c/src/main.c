@@ -1,11 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "bvh.h"
 #include "chunkmap.h"
+#include "colour.h"
 #include "dda.h"
 #include "flood.h"
 #include "harness.h"
 #include "integrate.h"
+#include "islands.h"
+#include "mass.h"
+#include "mips.h"
 #include "slotmap.h"
 #include "solve.h"
 #include "sort.h"
@@ -13,7 +18,8 @@
 #include "sweep.h"
 
 static const Case* const cases[] = {
-    &dda_case,     &flood_case,   &surface_case, &sweep_case, &solve_case,
+    &dda_case,     &flood_case,     &surface_case, &mips_case,     &mass_case,
+    &sweep_case,   &bvh_case,       &islands_case, &colour_case,   &solve_case,
     &integrate_case, &slotmap_case, &chunkmap_case, &sort_case,
 };
 

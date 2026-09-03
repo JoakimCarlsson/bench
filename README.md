@@ -1,6 +1,6 @@
 # bench
 
-C, C++ and Zig running the same nine kernels from a voxel physics engine.
+C, C++ and Zig running the same fourteen kernels from a voxel physics engine.
 Every kernel produces a checksum, and the runner only reports when all three
 languages produce the same bits.
 
@@ -12,15 +12,20 @@ median relative to the fastest language for that kernel.
 
 | kernel    | C     | C++   | Zig   | C     | C++   | Zig   |
 |-----------|------:|------:|------:|------:|------:|------:|
-| dda       | 5.27  | 5.22  | 5.19  | 1.01x | 1.01x | 1.00x |
-| flood     | 17.66 | 16.82 | 17.69 | 1.05x | 1.00x | 1.05x |
-| surface   | 9.39  | 9.37  | 7.90  | 1.19x | 1.19x | 1.00x |
-| sweep     | 7.84  | 7.42  | 8.74  | 1.06x | 1.00x | 1.18x |
-| solve     | 14.21 | 14.32 | 17.65 | 1.00x | 1.01x | 1.24x |
-| integrate | 10.55 | 9.07  | 7.14  | 1.48x | 1.27x | 1.00x |
-| slotmap   | 25.97 | 24.52 | 25.30 | 1.06x | 1.00x | 1.03x |
-| chunkmap  | 28.85 | 28.63 | 29.85 | 1.01x | 1.00x | 1.04x |
-| sort      | 49.01 | 9.93  | 35.91 | 4.94x | 1.00x | 3.62x |
+| dda       | 5.13  | 5.10  | 5.13  | 1.01x | 1.00x | 1.01x |
+| flood     | 16.31 | 16.27 | 17.31 | 1.00x | 1.00x | 1.06x |
+| surface   | 8.93  | 9.11  | 7.64  | 1.17x | 1.19x | 1.00x |
+| mips      | 8.65  | 8.75  | 10.97 | 1.00x | 1.01x | 1.27x |
+| mass      | 11.59 | 10.20 | 11.34 | 1.14x | 1.00x | 1.11x |
+| sweep     | 7.73  | 7.25  | 7.04  | 1.10x | 1.03x | 1.00x |
+| bvh       | 17.37 | 16.92 | 16.56 | 1.05x | 1.02x | 1.00x |
+| islands   | 2.09  | 2.02  | 2.14  | 1.04x | 1.00x | 1.06x |
+| colour    | 2.00  | 1.99  | 1.85  | 1.09x | 1.08x | 1.00x |
+| solve     | 14.09 | 13.79 | 17.56 | 1.02x | 1.00x | 1.27x |
+| integrate | 10.32 | 9.11  | 6.71  | 1.54x | 1.36x | 1.00x |
+| slotmap   | 25.10 | 24.13 | 24.69 | 1.04x | 1.00x | 1.02x |
+| chunkmap  | 27.47 | 27.17 | 27.92 | 1.01x | 1.00x | 1.03x |
+| sort      | 48.84 | 9.68  | 38.72 | 5.04x | 1.00x | 4.00x |
 
 Raw samples and best-of-run numbers: [results/latest.md](results/latest.md).
 
@@ -31,7 +36,12 @@ Raw samples and best-of-run numbers: [results/latest.md](results/latest.md).
 | dda       | 100k rays walked cell by cell through a 128^3 occupancy bitset                          |
 | flood     | 6-connected breadth-first labelling of a 128^3 grid at 30% fill                          |
 | surface   | exposed-face count of every solid voxel in a 128^3 grid at 75% fill                      |
+| mips      | rebuild row bitsets and 4^3 mips for 512 chunks of 32^3, then popcount                    |
+| mass      | mass, centre of mass and inertia tensor of 128 bodies of 32^3 voxels                     |
 | sweep     | sort-and-sweep broadphase over 16384 boxes, using the standard library sort              |
+| bvh       | build a BVH over 16384 boxes, then trace 20k rays through it                              |
+| islands   | union-find over 524288 contacts between 65536 bodies, label by lowest slot               |
+| colour    | greedy graph colouring of 524288 contacts so each colour solves in parallel              |
 | solve     | 8 frames of substepped sequential impulses, 4096 bodies, 16384 contacts                  |
 | integrate | 32 steps of position, velocity and quaternion integration over 65536 bodies              |
 | slotmap   | 4M insert, remove and lookup operations on a 65536-slot generational slot map           |
