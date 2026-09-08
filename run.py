@@ -1,4 +1,4 @@
-"""Run the three benchmark executables interleaved and compare them.
+"""Run the four benchmark executables interleaved and compare them.
 
 Every round runs each executable once, rotating the order, so thermal and
 frequency drift lands on every language equally instead of on whichever ran
@@ -29,8 +29,8 @@ ROOT = Path(__file__).resolve().parent
 OUT = ROOT / "out"
 RESULTS = ROOT / "results"
 EXE = ".exe" if os.name == "nt" else ""
-LANGS = ["c", "cpp", "zig"]
-LABEL = {"c": "C", "cpp": "C++", "zig": "Zig"}
+LANGS = ["c", "cpp", "zig", "rust"]
+LABEL = {"c": "C", "cpp": "C++", "zig": "Zig", "rust": "Rust"}
 
 
 @dataclass
@@ -89,8 +89,8 @@ def tool_version(cmd: list[str]) -> str:
         return "unknown"
 
 
-def build(zig: str) -> None:
-    env = dict(os.environ, ZIG=zig)
+def build(zig: str, cargo: str) -> None:
+    env = dict(os.environ, ZIG=zig, CARGO=cargo)
     subprocess.run(["make", "-s", "build"], cwd=ROOT, env=env, check=True)
 
 
@@ -126,10 +126,11 @@ def main() -> int:
     ap.add_argument("--langs", nargs="+", choices=LANGS, default=LANGS)
     ap.add_argument("--no-build", action="store_true", help="skip make; use what is in out/")
     ap.add_argument("--zig", default=os.environ.get("ZIG", "zig"), help="zig executable for the build")
+    ap.add_argument("--cargo", default=os.environ.get("CARGO", "cargo"), help="cargo executable for the build")
     args = ap.parse_args()
 
     if not args.no_build:
-        build(args.zig)
+        build(args.zig, args.cargo)
 
     langs: list[str] = args.langs
     results: dict[str, dict[str, Series]] = {}
@@ -156,6 +157,7 @@ def main() -> int:
         "os": f"{platform.system()} {platform.release()}",
         "c/c++": tool_version([os.environ.get("CC", "clang"), "--version"]),
         "zig": tool_version([args.zig, "version"]),
+        "rust": tool_version([args.cargo, "--version"]),
         "rounds": f"{args.rounds} x {args.reps} reps, {args.warmup} warmup",
     }
     report = render(results, langs, meta)

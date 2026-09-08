@@ -1,0 +1,4 @@
+# The native CPU, mirroring `-march=native` for C and C++ and the native CPU
+# the Zig build targets.
+[build]
+rustflags = ["-C", "target-cpu=native"]

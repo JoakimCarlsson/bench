@@ -3,3 +3,4 @@ zig/.zig-cache/
 zig/zig-out/
 results/*.json
 __pycache__/
+rust/target/
