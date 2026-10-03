@@ -31,8 +31,11 @@ size_t world_awake_count(const World* world);
 /// The world step: 64 steps of 864 boxes in 144 piles of six settling on a
 /// ground and falling asleep island by island, 36 tumbling boxes dropped onto
 /// every fourth pile that wake it on landing, and every eighth pile woken by a
-/// shove at step 45. `world` runs on one thread, `world4` on four.
+/// shove at step 45. `world` runs on one thread, `world2`, `world4`, `world8` and `world16` on that many.
 extern const Case world_case;
+extern const Case world2_case;
 extern const Case world4_case;
+extern const Case world8_case;
+extern const Case world16_case;
 
 #endif

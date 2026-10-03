@@ -1144,7 +1144,13 @@ pub struct WorldCase<const THREADS: u32> {
 }
 
 impl<const THREADS: u32> Case for WorldCase<THREADS> {
-    const NAME: &'static str = if THREADS == 1 { "world" } else { "world4" };
+    const NAME: &'static str = match THREADS {
+        1 => "world",
+        2 => "world2",
+        4 => "world4",
+        8 => "world8",
+        _ => "world16",
+    };
 
     /// A world with its pool.
     fn init() -> WorldCase<THREADS> {

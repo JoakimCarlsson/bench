@@ -1172,10 +1172,28 @@ static void setup_one_thread(void* state) {
     s->world = world_create(1);
 }
 
+/// Creates a world stepped on two threads.
+static void setup_two_threads(void* state) {
+    WorldCase* s = state;
+    s->world = world_create(2);
+}
+
 /// Creates a world stepped on four threads.
 static void setup_four_threads(void* state) {
     WorldCase* s = state;
     s->world = world_create(4);
+}
+
+/// Creates a world stepped on eight threads.
+static void setup_eight_threads(void* state) {
+    WorldCase* s = state;
+    s->world = world_create(8);
+}
+
+/// Creates a world stepped on sixteen threads.
+static void setup_sixteen_threads(void* state) {
+    WorldCase* s = state;
+    s->world = world_create(16);
 }
 
 /// Builds the piles, steps them with a shove partway, and hashes the awake
@@ -1199,4 +1217,7 @@ static void teardown(void* state) {
 }
 
 const Case world_case = { "world", sizeof(WorldCase), setup_one_thread, run, teardown };
+const Case world2_case = { "world2", sizeof(WorldCase), setup_two_threads, run, teardown };
 const Case world4_case = { "world4", sizeof(WorldCase), setup_four_threads, run, teardown };
+const Case world8_case = { "world8", sizeof(WorldCase), setup_eight_threads, run, teardown };
+const Case world16_case = { "world16", sizeof(WorldCase), setup_sixteen_threads, run, teardown };

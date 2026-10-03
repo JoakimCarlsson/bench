@@ -1141,7 +1141,13 @@ pub fn WorldCase(comptime threads: u32) type {
     return struct {
         const Self = @This();
 
-        pub const name = if (threads == 1) "world" else "world4";
+        pub const name = switch (threads) {
+            1 => "world",
+            2 => "world2",
+            4 => "world4",
+            8 => "world8",
+            else => "world16",
+        };
 
         const steps: usize = 64;
         const shove_step: usize = 45;

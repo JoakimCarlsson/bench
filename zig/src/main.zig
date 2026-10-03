@@ -1,4 +1,4 @@
-//! Entry point: `bench_zig [reps] [warmup]`, one output line per kernel.
+//! Entry point: `bench_zig [reps] [warmup] [kernel...]`, one output line per kernel.
 const std = @import("std");
 const harness = @import("harness.zig");
 
@@ -23,13 +23,20 @@ const cases = .{
     @import("broadphase.zig"),
     @import("gas.zig"),
     @import("world.zig").WorldCase(1),
+    @import("world.zig").WorldCase(2),
     @import("world.zig").WorldCase(4),
+    @import("world.zig").WorldCase(8),
+    @import("world.zig").WorldCase(16),
+    @import("particles.zig"),
+    @import("json.zig"),
+    @import("anim.zig"),
+    @import("ui.zig"),
     @import("slotmap.zig"),
     @import("chunkmap.zig"),
     @import("sort.zig"),
 };
 
-/// Parses `[reps] [warmup]` and runs every kernel in order.
+/// Parses `[reps] [warmup] [kernel...]` and runs the selected kernels in order.
 pub fn main(init: std.process.Init.Minimal) !u8 {
     const gpa = std.heap.smp_allocator;
 
@@ -50,8 +57,23 @@ pub fn main(init: std.process.Init.Minimal) !u8 {
         return 1;
     }
 
-    inline for (cases) |Case| try harness.runCase(Case, gpa, io, reps, warmup);
+    var names: std.ArrayList([]const u8) = .empty;
+    defer names.deinit(gpa);
+    while (it.next()) |name| try names.append(gpa, name);
+
+    inline for (cases) |Case| {
+        if (selected(Case.name, names.items)) try harness.runCase(Case, gpa, io, reps, warmup);
+    }
     return 0;
+}
+
+/// Whether the kernel `name` was asked for: no names given runs everything.
+fn selected(name: []const u8, names: []const []const u8) bool {
+    if (names.len == 0) return true;
+    for (names) |wanted| {
+        if (std.mem.eql(u8, wanted, name)) return true;
+    }
+    return false;
 }
 
 /// `arg` as a decimal count, or `default` when absent.

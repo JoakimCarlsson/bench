@@ -2,9 +2,9 @@
 
     python chart.py               reads results/latest.json
 
-Writes results/overview.svg, the average slowdown of each
-language against the fastest one per kernel, and
-results/kernels.svg, a heatmap of every kernel's slowdown.
+Writes results/overview.svg, the average slowdown of each language against the
+fastest one per kernel, results/kernels.svg, a heatmap of every kernel's
+slowdown, and results/scaling.svg, the world step against thread count.
 """
 
 from __future__ import annotations
@@ -22,6 +22,12 @@ LABEL = {"c": "C", "cpp": "C++", "zig": "Zig", "rust": "Rust"}
 FONT = "system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
 CAP = 2.0
 LIBRARY_KERNELS = ("sort",)
+SCALING_ONLY = ("world2", "world8", "world16")
+SCALING = {"world": 1, "world2": 2, "world4": 4, "world8": 8, "world16": 16}
+VARIANT_KERNELS = ("world4safe",)
+
+
+SERIES = {"c": "#3987e5", "cpp": "#d95926", "zig": "#199e70", "rust": "#c98500"}
 
 
 @dataclass(frozen=True)
@@ -52,7 +58,20 @@ def medians(path: Path) -> dict[str, dict[str, float]]:
     return {
         case: {lang: statistics.median(s["median_ns"] for s in per[lang]) / 1e6 for lang in LANGS}
         for case, per in data["results"].items()
+        if all(lang in per for lang in LANGS) and case not in SCALING_ONLY and case not in VARIANT_KERNELS
     }
+
+
+def scaling_times(path: Path) -> dict[int, dict[str, float]]:
+    """Median milliseconds of the world step by thread count and language."""
+    data = json.loads(path.read_text(encoding="utf-8"))
+    out: dict[int, dict[str, float]] = {}
+    for case, threads in SCALING.items():
+        per = data["results"].get(case)
+        if per is None or not all(lang in per for lang in LANGS):
+            continue
+        out[threads] = {lang: statistics.median(s["median_ns"] for s in per[lang]) / 1e6 for lang in LANGS}
+    return out
 
 
 def relative(times: dict[str, dict[str, float]]) -> dict[str, dict[str, float]]:
@@ -191,12 +210,60 @@ def heatmap(rel: dict[str, dict[str, float]], times: dict[str, dict[str, float]]
     return svg(width, height, theme, body, "Time per kernel, relative to the fastest language")
 
 
+def scaling(times: dict[int, dict[str, float]], theme: Theme) -> str:
+    """The world step against thread count, one line per language."""
+    counts = sorted(times)
+    width, height = 720, 392
+    left, right, top, bottom = 64, 28, 118, 52
+    plot_w = width - left - right
+    plot_h = height - top - bottom
+    peak = max(max(per.values()) for per in times.values())
+    scale_max = float(math.ceil(peak / 5) * 5)
+
+    def x_of(index: int) -> float:
+        return left + plot_w * index / (len(counts) - 1)
+
+    def y_of(value: float) -> float:
+        return top + plot_h * (1.0 - value / scale_max)
+
+    body = [
+        text(24, 32, "The same world step on 1 to 16 threads", theme.text_primary, 17, weight=600),
+        text(24, 54, "Median milliseconds per 64-step run, lower is faster. The CPU has 20 hardware threads;", theme.text_secondary, 13),
+        text(24, 72, "the engine caps its own pool at 8.", theme.text_secondary, 13),
+    ]
+    for tick in range(0, int(scale_max) + 1, 5):
+        y = y_of(float(tick))
+        body.append(f'<line x1="{left}" y1="{y:.1f}" x2="{width - right}" y2="{y:.1f}" stroke="{theme.grid}" stroke-width="1"/>')
+        body.append(text(left - 10, y + 4, f"{tick}", theme.text_secondary, 12, "end"))
+    for index, count in enumerate(counts):
+        body.append(text(x_of(index), top + plot_h + 22, f"{count}", theme.text_secondary, 12, "middle"))
+    body.append(text(left + plot_w / 2, height - 10, "threads", theme.text_secondary, 12, "middle"))
+    for lang in LANGS:
+        points = " ".join(f"{x_of(i):.1f},{y_of(times[c][lang]):.1f}" for i, c in enumerate(counts))
+        body.append(f'<polyline points="{points}" fill="none" stroke="{SERIES[lang]}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>')
+    for lang in LANGS:
+        for i, count in enumerate(counts):
+            body.append(
+                f'<circle cx="{x_of(i):.1f}" cy="{y_of(times[count][lang]):.1f}" r="5" fill="{SERIES[lang]}" stroke="{theme.surface}" stroke-width="2">'
+                f"<title>{LABEL[lang]}, {count} threads: {times[count][lang]:.2f} ms</title></circle>"
+            )
+    legend_x = left
+    for lang in LANGS:
+        body.append(f'<circle cx="{legend_x + 5}" cy="96" r="5" fill="{SERIES[lang]}"/>')
+        body.append(text(legend_x + 16, 100, LABEL[lang], theme.text_primary, 13))
+        legend_x += 90
+    return svg(width, height, theme, body, "The same world step on 1 to 16 threads")
+
+
 def main() -> int:
-    """Read the latest results and write the two SVGs."""
+    """Read the latest results and write the SVGs."""
     times = medians(RESULTS / "latest.json")
     rel = relative(times)
     (RESULTS / "overview.svg").write_text(overview(rel, THEME), encoding="utf-8")
     (RESULTS / "kernels.svg").write_text(heatmap(rel, times, THEME), encoding="utf-8")
+    threads = scaling_times(RESULTS / "latest.json")
+    if threads:
+        (RESULTS / "scaling.svg").write_text(scaling(threads, THEME), encoding="utf-8")
     return 0
 
 

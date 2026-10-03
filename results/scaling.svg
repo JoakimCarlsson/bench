@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="392" viewBox="0 0 720 392" role="img">
+<title>The same world step on 1 to 16 threads</title>
+<rect width="720" height="392" rx="8" fill="#1a1a19"/>
+<text x="24.0" y="32.0" fill="#ffffff" font-size="17" font-weight="600" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">The same world step on 1 to 16 threads</text>
+<text x="24.0" y="54.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Median milliseconds per 64-step run, lower is faster. The CPU has 20 hardware threads;</text>
+<text x="24.0" y="72.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">the engine caps its own pool at 8.</text>
+<line x1="64" y1="340.0" x2="692" y2="340.0" stroke="#383835" stroke-width="1"/>
+<text x="54.0" y="344.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">0</text>
+<line x1="64" y1="295.6" x2="692" y2="295.6" stroke="#383835" stroke-width="1"/>
+<text x="54.0" y="299.6" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">5</text>
+<line x1="64" y1="251.2" x2="692" y2="251.2" stroke="#383835" stroke-width="1"/>
+<text x="54.0" y="255.2" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">10</text>
+<line x1="64" y1="206.8" x2="692" y2="206.8" stroke="#383835" stroke-width="1"/>
+<text x="54.0" y="210.8" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">15</text>
+<line x1="64" y1="162.4" x2="692" y2="162.4" stroke="#383835" stroke-width="1"/>
+<text x="54.0" y="166.4" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">20</text>
+<line x1="64" y1="118.0" x2="692" y2="118.0" stroke="#383835" stroke-width="1"/>
+<text x="54.0" y="122.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">25</text>
+<text x="64.0" y="362.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1</text>
+<text x="221.0" y="362.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2</text>
+<text x="378.0" y="362.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">4</text>
+<text x="535.0" y="362.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">8</text>
+<text x="692.0" y="362.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16</text>
+<text x="378.0" y="382.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">threads</text>
+<polyline points="64.0,178.8 221.0,202.3 378.0,229.9 535.0,214.0 692.0,216.1" fill="none" stroke="#3987e5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="64.0,172.1 221.0,200.3 378.0,226.9 535.0,217.4 692.0,218.5" fill="none" stroke="#d95926" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="64.0,160.0 221.0,190.7 378.0,224.0 535.0,214.8 692.0,210.4" fill="none" stroke="#199e70" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="64.0,174.4 221.0,193.4 378.0,225.4 535.0,206.3 692.0,209.6" fill="none" stroke="#c98500" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="64.0" cy="178.8" r="5" fill="#3987e5" stroke="#1a1a19" stroke-width="2"><title>C, 1 threads: 18.16 ms</title></circle>
+<circle cx="221.0" cy="202.3" r="5" fill="#3987e5" stroke="#1a1a19" stroke-width="2"><title>C, 2 threads: 15.50 ms</title></circle>
+<circle cx="378.0" cy="229.9" r="5" fill="#3987e5" stroke="#1a1a19" stroke-width="2"><title>C, 4 threads: 12.40 ms</title></circle>
+<circle cx="535.0" cy="214.0" r="5" fill="#3987e5" stroke="#1a1a19" stroke-width="2"><title>C, 8 threads: 14.19 ms</title></circle>
+<circle cx="692.0" cy="216.1" r="5" fill="#3987e5" stroke="#1a1a19" stroke-width="2"><title>C, 16 threads: 13.95 ms</title></circle>
+<circle cx="64.0" cy="172.1" r="5" fill="#d95926" stroke="#1a1a19" stroke-width="2"><title>C++, 1 threads: 18.91 ms</title></circle>
+<circle cx="221.0" cy="200.3" r="5" fill="#d95926" stroke="#1a1a19" stroke-width="2"><title>C++, 2 threads: 15.73 ms</title></circle>
+<circle cx="378.0" cy="226.9" r="5" fill="#d95926" stroke="#1a1a19" stroke-width="2"><title>C++, 4 threads: 12.74 ms</title></circle>
+<circle cx="535.0" cy="217.4" r="5" fill="#d95926" stroke="#1a1a19" stroke-width="2"><title>C++, 8 threads: 13.81 ms</title></circle>
+<circle cx="692.0" cy="218.5" r="5" fill="#d95926" stroke="#1a1a19" stroke-width="2"><title>C++, 16 threads: 13.68 ms</title></circle>
+<circle cx="64.0" cy="160.0" r="5" fill="#199e70" stroke="#1a1a19" stroke-width="2"><title>Zig, 1 threads: 20.27 ms</title></circle>
+<circle cx="221.0" cy="190.7" r="5" fill="#199e70" stroke="#1a1a19" stroke-width="2"><title>Zig, 2 threads: 16.81 ms</title></circle>
+<circle cx="378.0" cy="224.0" r="5" fill="#199e70" stroke="#1a1a19" stroke-width="2"><title>Zig, 4 threads: 13.06 ms</title></circle>
+<circle cx="535.0" cy="214.8" r="5" fill="#199e70" stroke="#1a1a19" stroke-width="2"><title>Zig, 8 threads: 14.10 ms</title></circle>
+<circle cx="692.0" cy="210.4" r="5" fill="#199e70" stroke="#1a1a19" stroke-width="2"><title>Zig, 16 threads: 14.59 ms</title></circle>
+<circle cx="64.0" cy="174.4" r="5" fill="#c98500" stroke="#1a1a19" stroke-width="2"><title>Rust, 1 threads: 18.65 ms</title></circle>
+<circle cx="221.0" cy="193.4" r="5" fill="#c98500" stroke="#1a1a19" stroke-width="2"><title>Rust, 2 threads: 16.51 ms</title></circle>
+<circle cx="378.0" cy="225.4" r="5" fill="#c98500" stroke="#1a1a19" stroke-width="2"><title>Rust, 4 threads: 12.91 ms</title></circle>
+<circle cx="535.0" cy="206.3" r="5" fill="#c98500" stroke="#1a1a19" stroke-width="2"><title>Rust, 8 threads: 15.06 ms</title></circle>
+<circle cx="692.0" cy="209.6" r="5" fill="#c98500" stroke="#1a1a19" stroke-width="2"><title>Rust, 16 threads: 14.68 ms</title></circle>
+<circle cx="69" cy="96" r="5" fill="#3987e5"/>
+<text x="80.0" y="100.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">C</text>
+<circle cx="159" cy="96" r="5" fill="#d95926"/>
+<text x="170.0" y="100.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">C++</text>
+<circle cx="249" cy="96" r="5" fill="#199e70"/>
+<text x="260.0" y="100.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Zig</text>
+<circle cx="339" cy="96" r="5" fill="#c98500"/>
+<text x="350.0" y="100.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Rust</text>
+</svg>

@@ -33,6 +33,7 @@ RESULTS = ROOT / "results"
 EXE = ".exe" if os.name == "nt" else ""
 LANGS = ["c", "cpp", "zig", "rust"]
 LABEL = {"c": "C", "cpp": "C++", "zig": "Zig", "rust": "Rust"}
+VARIANTS = {"world4safe": "world4"}
 
 
 @dataclass
@@ -108,6 +109,8 @@ def render(results: dict[str, dict[str, Series]], langs: list[str], meta: dict[s
     lines.append("Times in milliseconds per repetition. `best` is the fastest single repetition seen; `median` is the median of each run's median. `rel` is `median` relative to the fastest language for that kernel.")
     lines.append("")
     for case, per_lang in results.items():
+        if case in VARIANTS:
+            continue
         fastest = min(per_lang[l].median_ns() for l in langs)
         lines.append(f"## {case}")
         lines.append("")
@@ -116,6 +119,18 @@ def render(results: dict[str, dict[str, Series]], langs: list[str], meta: dict[s
         for lang in langs:
             s = per_lang[lang]
             lines.append(f"| {LABEL[lang]} | {fmt_ms(s.best_ns())} | {fmt_ms(s.median_ns())} | {s.median_ns() / fastest:.2f}x |")
+        lines.append("")
+    for case, base in VARIANTS.items():
+        if case not in results:
+            continue
+        lines.append(f"## {case}")
+        lines.append("")
+        lines.append(f"A variant of `{base}`, same checksum.")
+        lines.append("")
+        lines.append("| language | best | median | rel to base |")
+        lines.append("|---|---:|---:|---:|")
+        for lang, s in results[case].items():
+            lines.append(f"| {LABEL[lang]} | {fmt_ms(s.best_ns())} | {fmt_ms(s.median_ns())} | {s.median_ns() / results[base][lang].median_ns():.2f}x |")
         lines.append("")
     return "\n".join(lines)
 
@@ -147,6 +162,8 @@ def main() -> int:
     for case, per_lang in results.items():
         sums = {lang: s.checksums() for lang, s in per_lang.items()}
         union = set().union(*sums.values())
+        if case in VARIANTS:
+            union |= set().union(*(results[VARIANTS[case]][lang].checksums() for lang in per_lang))
         if len(union) != 1:
             mismatched = True
             print(f"checksum mismatch in {case}: {sums}", file=sys.stderr)

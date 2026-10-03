@@ -215,7 +215,8 @@ private:
 /// sections.
 template <uint32_t threads> class WorldCase {
 public:
-    static constexpr const char* name = threads == 1 ? "world" : "world4";
+    static constexpr const char* name =
+        threads == 1 ? "world" : threads == 2 ? "world2" : threads == 4 ? "world4" : threads == 8 ? "world8" : "world16";
 
     WorldCase() : world_(threads) {}
 
