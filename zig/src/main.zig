@@ -19,11 +19,17 @@ const cases = .{
     @import("decompose.zig"),
     @import("raycast.zig"),
     @import("boxbox.zig"),
+    @import("wide.zig"),
+    @import("broadphase.zig"),
+    @import("gas.zig"),
+    @import("world.zig").WorldCase(1),
+    @import("world.zig").WorldCase(4),
     @import("slotmap.zig"),
     @import("chunkmap.zig"),
     @import("sort.zig"),
 };
 
+/// Parses `[reps] [warmup]` and runs every kernel in order.
 pub fn main(init: std.process.Init.Minimal) !u8 {
     const gpa = std.heap.smp_allocator;
 
@@ -48,6 +54,7 @@ pub fn main(init: std.process.Init.Minimal) !u8 {
     return 0;
 }
 
+/// `arg` as a decimal count, or `default` when absent.
 fn parseOr(arg: ?[]const u8, default: usize) !usize {
     const text = arg orelse return default;
     return std.fmt.parseInt(usize, text, 10);

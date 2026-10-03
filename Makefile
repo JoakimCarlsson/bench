@@ -22,7 +22,7 @@ EXE := .exe
 LIBM :=
 else
 EXE :=
-LIBM := -lm
+LIBM := -lm -pthread
 endif
 
 OUT := out
@@ -47,7 +47,7 @@ $(OUT)/bench_c$(EXE): $(C_SRC) c/src/*.h | $(OUT)
 	$(CC) $(CFLAGS) -o $@ $(C_SRC) $(LIBM)
 
 $(OUT)/bench_cpp$(EXE): $(CPP_SRC) cpp/src/*.hpp | $(OUT)
-	$(CXX) $(CXXFLAGS) -o $@ $(CPP_SRC)
+	$(CXX) $(CXXFLAGS) -o $@ $(CPP_SRC) $(LIBM)
 
 $(OUT)/bench_zig$(EXE): $(ZIG_SRC) | $(OUT)
 	cd zig && $(ZIG) build --prefix ../$(OUT) --prefix-exe-dir .

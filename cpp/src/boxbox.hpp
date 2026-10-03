@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <vector>
 
+#include "contact.hpp"
 #include "vecmath.hpp"
 
 namespace bench {
@@ -16,19 +17,6 @@ class BoxBox {
 public:
     static constexpr const char* name = "boxbox";
 
-    struct ManifoldPoint {
-        vm::Vec3 point{};
-        float separation{};
-        float normal_impulse{};
-        uint32_t feature_id{};
-        bool persisted{};
-    };
-    struct Manifold {
-        vm::Vec3 normal{};
-        vm::Vec3 separating_axis{};
-        std::array<ManifoldPoint, 4> points{};
-        uint32_t point_count{};
-    };
     struct Pair { vm::BoxPose a, b; vm::Vec3 velocity; };
 
     BoxBox();
@@ -39,7 +27,7 @@ private:
     static constexpr int frames = 8;
 
     std::vector<Pair> pairs_;
-    std::vector<Manifold> manifolds_;
+    std::vector<phys::Manifold> manifolds_;
 };
 
 } // namespace bench

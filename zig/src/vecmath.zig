@@ -8,6 +8,7 @@ pub const Vec3 = struct {
     y: f32 = 0.0,
     z: f32 = 0.0,
 
+    /// A vector from its components.
     pub fn init(x: f32, y: f32, z: f32) Vec3 {
         return .{ .x = x, .y = y, .z = z };
     }
@@ -64,6 +65,21 @@ pub const Vec3 = struct {
     pub fn normalize(a: Vec3) Vec3 {
         return a.div(a.length());
     }
+
+    /// Component-wise minimum.
+    pub fn min(a: Vec3, b: Vec3) Vec3 {
+        return .{ .x = if (a.x < b.x) a.x else b.x, .y = if (a.y < b.y) a.y else b.y, .z = if (a.z < b.z) a.z else b.z };
+    }
+
+    /// Component-wise maximum.
+    pub fn max(a: Vec3, b: Vec3) Vec3 {
+        return .{ .x = if (a.x > b.x) a.x else b.x, .y = if (a.y > b.y) a.y else b.y, .z = if (a.z > b.z) a.z else b.z };
+    }
+
+    /// Component-wise absolute value.
+    pub fn abs(a: Vec3) Vec3 {
+        return .{ .x = if (a.x < 0.0) -a.x else a.x, .y = if (a.y < 0.0) -a.y else a.y, .z = if (a.z < 0.0) -a.z else a.z };
+    }
 };
 
 /// Three column vectors; the identity by default.
@@ -80,6 +96,16 @@ pub const Basis = struct {
     /// Compose two bases; the result applies `b` first, then `a`.
     pub fn mul(a: Basis, b: Basis) Basis {
         return .{ .x = a.apply(b.x), .y = a.apply(b.y), .z = a.apply(b.z) };
+    }
+
+    /// Column-wise sum.
+    pub fn add(a: Basis, b: Basis) Basis {
+        return .{ .x = a.x.add(b.x), .y = a.y.add(b.y), .z = a.z.add(b.z) };
+    }
+
+    /// Every column scaled.
+    pub fn scale(a: Basis, s: f32) Basis {
+        return .{ .x = a.x.scale(s), .y = a.y.scale(s), .z = a.z.scale(s) };
     }
 
     /// Swap rows and columns.
@@ -247,6 +273,11 @@ pub const Transform = struct {
         return .{ .basis = a.basis.mul(b.basis), .origin = a.basis.apply(b.origin).add(a.origin) };
     }
 
+    /// A point moved by the transform.
+    pub fn transformPoint(t: Transform, p: Vec3) Vec3 {
+        return t.basis.apply(p).add(t.origin);
+    }
+
     /// Transform at `eye` whose negative z axis faces `target`.
     pub fn lookingAt(eye: Vec3, target: Vec3, up: Vec3) Transform {
         const back = eye.sub(target).normalize();
@@ -277,6 +308,41 @@ pub const Transform = struct {
         r.m[13] = t.origin.y;
         r.m[14] = t.origin.z;
         return r;
+    }
+};
+
+/// Axis-aligned box by its corners.
+pub const Aabb = struct {
+    min: Vec3 = .{},
+    max: Vec3 = .{},
+
+    /// Whether two boxes overlap, touching included.
+    pub fn overlaps(a: Aabb, b: Aabb) bool {
+        return a.min.x <= b.max.x and a.max.x >= b.min.x and a.min.y <= b.max.y and a.max.y >= b.min.y and
+            a.min.z <= b.max.z and a.max.z >= b.min.z;
+    }
+
+    /// Whether `outer` fully contains `inner`.
+    pub fn contains(outer: Aabb, inner: Aabb) bool {
+        return outer.min.x <= inner.min.x and outer.min.y <= inner.min.y and outer.min.z <= inner.min.z and
+            outer.max.x >= inner.max.x and outer.max.y >= inner.max.y and outer.max.z >= inner.max.z;
+    }
+
+    /// Smallest box containing both.
+    pub fn merge(a: Aabb, b: Aabb) Aabb {
+        return .{ .min = a.min.min(b.min), .max = a.max.max(b.max) };
+    }
+
+    /// The box expanded by `margin` on every side.
+    pub fn grow(box: Aabb, margin: f32) Aabb {
+        const m = Vec3.init(margin, margin, margin);
+        return .{ .min = box.min.sub(m), .max = box.max.add(m) };
+    }
+
+    /// Total surface area.
+    pub fn surfaceArea(box: Aabb) f32 {
+        const d = box.max.sub(box.min);
+        return 2.0 * (d.x * d.y + d.y * d.z + d.z * d.x);
     }
 };
 
@@ -358,3 +424,25 @@ pub const Mat4 = struct {
         return Vec3.init(x, y, z).div(w);
     }
 };
+
+/// `std::max`: `b` when a < b, otherwise `a`.
+pub fn maxf(a: f32, b: f32) f32 {
+    return if (a < b) b else a;
+}
+
+/// `std::min`: `b` when b < a, otherwise `a`.
+pub fn minf(a: f32, b: f32) f32 {
+    return if (b < a) b else a;
+}
+
+/// `std::clamp`: `low` below it, `high` above it, otherwise `value`.
+pub fn clampf(value: f32, low: f32, high: f32) f32 {
+    if (value < low) return low;
+    if (high < value) return high;
+    return value;
+}
+
+/// `std::max` over three values, the first largest kept.
+pub fn max3(a: f32, b: f32, c: f32) f32 {
+    return maxf(maxf(a, b), c);
+}

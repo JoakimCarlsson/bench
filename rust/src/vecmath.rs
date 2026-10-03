@@ -12,6 +12,7 @@ pub struct Vec3 {
 }
 
 impl Vec3 {
+    /// A vector from its components.
     pub const fn new(x: f32, y: f32, z: f32) -> Vec3 {
         Vec3 { x, y, z }
     }
@@ -42,6 +43,47 @@ impl Vec3 {
     /// Scaled to unit length; a zero vector is not guarded.
     pub fn normalize(self) -> Vec3 {
         self / self.length()
+    }
+
+    /// Component-wise minimum.
+    pub fn min(self, b: Vec3) -> Vec3 {
+        Vec3::new(if self.x < b.x { self.x } else { b.x }, if self.y < b.y { self.y } else { b.y }, if self.z < b.z { self.z } else { b.z })
+    }
+
+    /// Component-wise maximum.
+    pub fn max(self, b: Vec3) -> Vec3 {
+        Vec3::new(if self.x > b.x { self.x } else { b.x }, if self.y > b.y { self.y } else { b.y }, if self.z > b.z { self.z } else { b.z })
+    }
+
+    /// Component-wise absolute value, keeping the sign of a negative zero.
+    pub fn abs(self) -> Vec3 {
+        Vec3::new(if self.x < 0.0 { -self.x } else { self.x }, if self.y < 0.0 { -self.y } else { self.y }, if self.z < 0.0 { -self.z } else { self.z })
+    }
+}
+
+/// The larger of two floats as `std::max` picks it: `a` unless `a < b`.
+pub fn max(a: f32, b: f32) -> f32 {
+    if a < b { b } else { a }
+}
+
+/// The smaller of two floats as `std::min` picks it: `a` unless `b < a`.
+pub fn min(a: f32, b: f32) -> f32 {
+    if b < a { b } else { a }
+}
+
+/// The largest of three floats, the first on a tie, as `std::max` over a list.
+pub fn max3(a: f32, b: f32, c: f32) -> f32 {
+    max(max(a, b), c)
+}
+
+/// `value` limited to [lo, hi] as `std::clamp` does it.
+pub fn clamp(value: f32, lo: f32, hi: f32) -> f32 {
+    if value < lo {
+        lo
+    } else if hi < value {
+        hi
+    } else {
+        value
     }
 }
 
@@ -168,6 +210,24 @@ impl Basis {
     }
 }
 
+impl Add for Basis {
+    type Output = Basis;
+
+    /// Column-wise sum.
+    fn add(self, b: Basis) -> Basis {
+        Basis { x: self.x + b.x, y: self.y + b.y, z: self.z + b.z }
+    }
+}
+
+impl Mul<f32> for Basis {
+    type Output = Basis;
+
+    /// Every column scaled.
+    fn mul(self, s: f32) -> Basis {
+        Basis { x: self.x * s, y: self.y * s, z: self.z * s }
+    }
+}
+
 impl Mul<Vec3> for Basis {
     type Output = Vec3;
 
@@ -290,6 +350,11 @@ impl Transform {
         Transform { basis: Basis { x: right, y: true_up, z: back }, origin: eye }
     }
 
+    /// A point moved by the transform.
+    pub fn transform_point(&self, p: Vec3) -> Vec3 {
+        self.basis * p + self.origin
+    }
+
     /// Inverse of a transform with an orthonormal basis.
     pub fn inverse_orthonormal(&self) -> Transform {
         let inv = self.basis.transposed();
@@ -321,6 +386,47 @@ impl Mul for Transform {
     /// Compose two transforms; the result applies `b` first, then `self`.
     fn mul(self, b: Transform) -> Transform {
         Transform { basis: self.basis * b.basis, origin: self.basis * b.origin + self.origin }
+    }
+}
+
+/// Axis-aligned box by its corners.
+#[derive(Clone, Copy, Default)]
+pub struct Aabb {
+    pub min: Vec3,
+    pub max: Vec3,
+}
+
+impl Aabb {
+    /// Whether two boxes overlap, touching included.
+    pub fn overlaps(&self, b: &Aabb) -> bool {
+        self.min.x <= b.max.x && self.max.x >= b.min.x && self.min.y <= b.max.y && self.max.y >= b.min.y && self.min.z <= b.max.z && self.max.z >= b.min.z
+    }
+
+    /// Whether this box fully contains `inner`.
+    pub fn contains(&self, inner: &Aabb) -> bool {
+        self.min.x <= inner.min.x
+            && self.min.y <= inner.min.y
+            && self.min.z <= inner.min.z
+            && self.max.x >= inner.max.x
+            && self.max.y >= inner.max.y
+            && self.max.z >= inner.max.z
+    }
+
+    /// Smallest box containing both.
+    pub fn merge(&self, b: &Aabb) -> Aabb {
+        Aabb { min: self.min.min(b.min), max: self.max.max(b.max) }
+    }
+
+    /// The box expanded by `margin` on every side.
+    pub fn grow(&self, margin: f32) -> Aabb {
+        let m = Vec3::new(margin, margin, margin);
+        Aabb { min: self.min - m, max: self.max + m }
+    }
+
+    /// Total surface area.
+    pub fn surface_area(&self) -> f32 {
+        let d = self.max - self.min;
+        2.0 * (d.x * d.y + d.y * d.z + d.z * d.x)
     }
 }
 

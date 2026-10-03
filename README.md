@@ -1,6 +1,6 @@
 # bench
 
-C, C++, Zig and Rust running the same nineteen kernels from a voxel physics
+C, C++, Zig and Rust running the same twenty-four kernels from a voxel physics
 engine. Every kernel produces a checksum, and the runner only reports when all
 four languages produce the same bits.
 
@@ -13,25 +13,30 @@ kernel.
 
 | kernel    |     C |   C++ |   Zig |  Rust |     C |   C++ |   Zig |  Rust |
 |-----------|------:|------:|------:|------:|------:|------:|------:|------:|
-| dda       |  5.07 |  5.16 |  5.14 |  5.14 | 1.00x | 1.02x | 1.01x | 1.01x |
-| flood     | 15.97 | 15.89 | 16.86 | 16.41 | 1.00x | 1.00x | 1.06x | 1.03x |
-| surface   |  8.85 |  8.89 |  7.62 | 11.85 | 1.16x | 1.17x | 1.00x | 1.56x |
-| mips      |  8.15 |  8.22 | 10.63 | 10.40 | 1.00x | 1.01x | 1.31x | 1.28x |
-| mass      | 11.41 |  9.91 | 11.00 | 13.73 | 1.15x | 1.00x | 1.11x | 1.39x |
-| sweep     |  6.99 |  7.37 |  7.97 |  6.89 | 1.02x | 1.07x | 1.16x | 1.00x |
-| bvh       | 17.01 | 16.54 | 16.56 | 16.07 | 1.06x | 1.03x | 1.03x | 1.00x |
-| islands   |  2.03 |  2.06 |  2.02 |  2.29 | 1.00x | 1.02x | 1.00x | 1.14x |
-| colour    |  2.00 |  1.98 |  1.71 |  1.67 | 1.20x | 1.18x | 1.02x | 1.00x |
-| solve     | 13.61 | 13.46 | 16.64 | 13.41 | 1.01x | 1.00x | 1.24x | 1.00x |
-| integrate | 10.11 |  8.59 |  7.18 | 10.07 | 1.41x | 1.20x | 1.00x | 1.40x |
-| transform | 11.94 | 11.93 |  9.76 | 11.55 | 1.22x | 1.22x | 1.00x | 1.18x |
-| unproject |  9.75 |  9.50 |  6.99 |  7.10 | 1.39x | 1.36x | 1.00x | 1.02x |
-| decompose |  9.37 |  9.16 |  7.10 |  7.18 | 1.32x | 1.29x | 1.00x | 1.01x |
-| raycast   | 12.91 | 13.02 | 11.78 | 13.74 | 1.10x | 1.11x | 1.00x | 1.17x |
-| boxbox    | 11.82 | 10.80 | 10.90 | 11.53 | 1.09x | 1.00x | 1.01x | 1.07x |
-| slotmap   | 24.86 | 23.66 | 24.65 | 23.69 | 1.05x | 1.00x | 1.04x | 1.00x |
-| chunkmap  | 26.01 | 26.24 | 26.68 | 26.23 | 1.00x | 1.01x | 1.03x | 1.01x |
-| sort      | 41.06 | 22.23 | 38.24 |  5.26 | 7.81x | 4.23x | 7.27x | 1.00x |
+| dda       |  5.07 |  5.14 |  5.06 |  5.34 | 1.00x | 1.02x | 1.00x | 1.06x |
+| flood     | 16.02 | 15.81 | 16.63 | 17.32 | 1.01x | 1.00x | 1.05x | 1.10x |
+| surface   |  8.94 |  9.19 |  7.63 | 11.81 | 1.17x | 1.20x | 1.00x | 1.55x |
+| mips      |  8.47 |  8.36 | 11.12 | 10.50 | 1.01x | 1.00x | 1.33x | 1.26x |
+| mass      | 11.48 |  9.85 | 10.78 | 13.77 | 1.17x | 1.00x | 1.09x | 1.40x |
+| sweep     |  7.83 |  7.40 |  7.12 |  6.13 | 1.28x | 1.21x | 1.16x | 1.00x |
+| bvh       | 16.85 | 16.46 | 16.22 | 16.12 | 1.05x | 1.02x | 1.01x | 1.00x |
+| islands   |  2.08 |  2.06 |  2.01 |  2.25 | 1.04x | 1.02x | 1.00x | 1.12x |
+| colour    |  1.98 |  1.97 |  1.75 |  1.66 | 1.19x | 1.19x | 1.05x | 1.00x |
+| solve     | 13.59 | 13.42 | 16.67 | 13.41 | 1.01x | 1.00x | 1.24x | 1.00x |
+| integrate | 10.25 |  8.58 |  7.14 | 10.01 | 1.44x | 1.20x | 1.00x | 1.40x |
+| transform | 11.98 | 11.97 |  9.80 | 11.39 | 1.22x | 1.22x | 1.00x | 1.16x |
+| unproject |  9.75 |  9.39 |  7.01 |  7.11 | 1.39x | 1.34x | 1.00x | 1.01x |
+| decompose |  9.43 |  9.09 |  7.37 |  7.20 | 1.31x | 1.26x | 1.02x | 1.00x |
+| raycast   | 13.22 | 13.00 | 11.75 | 13.77 | 1.13x | 1.11x | 1.00x | 1.17x |
+| boxbox    | 12.26 | 11.25 | 11.89 | 12.96 | 1.09x | 1.00x | 1.06x | 1.15x |
+| wide      | 19.64 | 20.59 | 22.25 | 19.80 | 1.00x | 1.05x | 1.13x | 1.01x |
+| broadphase | 22.63 | 23.09 | 22.08 | 21.28 | 1.06x | 1.09x | 1.04x | 1.00x |
+| gas       | 26.37 | 24.18 | 29.73 | 21.48 | 1.23x | 1.13x | 1.38x | 1.00x |
+| world     | 18.11 | 18.83 | 20.14 | 18.70 | 1.00x | 1.04x | 1.11x | 1.03x |
+| world4    | 12.50 | 13.05 | 13.56 | 13.38 | 1.00x | 1.04x | 1.08x | 1.07x |
+| slotmap   | 24.65 | 23.53 | 24.64 | 23.80 | 1.05x | 1.00x | 1.05x | 1.01x |
+| chunkmap  | 25.95 | 25.45 | 27.24 | 26.83 | 1.02x | 1.00x | 1.07x | 1.05x |
+| sort      | 40.98 | 22.07 | 38.25 |  5.24 | 7.82x | 4.21x | 7.30x | 1.00x |
 
 Raw samples and best-of-run numbers: [results/latest.md](results/latest.md).
 
@@ -55,13 +60,53 @@ Raw samples and best-of-run numbers: [results/latest.md](results/latest.md).
 | decompose | basis from rotation and scale, then scale, rotation, inverse and rotate back, 262144 times  |
 | raycast   | closest hit of 1024 rays against 1024 oriented boxes with the engine's slab test          |
 | boxbox    | 8 frames of box-box SAT, face clipping, reduction and warm starting over 8192 pairs        |
+| wide      | 4 steps of the engine's 8-lane contact solver: 8192 stacked bodies, 12k coloured contacts  |
+| broadphase | 16 frames of 4096 tumbling boxes through the engine's dynamic AABB tree and pair map     |
+| gas       | 4 substeps of the engine's particle gas solver over 8192 particles and 4 stirring boxes    |
+| world     | 64 steps of the engine's `PhysicsWorld::step` on one thread: 900 boxes settle, sleep, wake  |
+| world4    | the same 64 steps on the engine's task pool with 4 threads                                  |
 | slotmap   | 4M insert, remove and lookup operations on a 65536-slot generational slot map           |
 | chunkmap  | open-addressing hash map: 200k inserts, 2M lookups at 50% hit rate                        |
 | sort      | `qsort`, `std::sort`, `std.mem.sortUnstable` and `sort_unstable` over 2^19 random u64 keys |
 
-All state is allocated before the timed region. The last five port the
-engine's `math.cpp`, `ray_cast.cpp` and `box_collision.cpp` into a shared
-`vecmath` module per language.
+Kernels allocate before the timed region, except where the engine itself
+allocates: `broadphase`, `world` and `world4` rebuild their world inside each
+repetition and grow lists as the engine does. `transform` through `boxbox`
+port the engine's `math.cpp`, `ray_cast.cpp` and `box_collision.cpp` into a
+shared `vecmath` module per language.
+
+`wide` ports `contact_solver.cpp`, `simd.hpp` and the constraint graph's
+colouring, single-threaded: each step prepares scalar constraints, packs every
+colour into eight-lane bundles, runs 4 substeps of warm start, biased solve,
+position integration and relaxed solve with friction, then restitution, and
+stores impulses and poses. Each language writes the SIMD the way a port would:
+C++ keeps the engine's vector-extension `FloatW8`, C uses AVX intrinsics, Zig
+uses `@Vector(8, f32)`, and Rust wraps `core::arch` AVX intrinsics in its own
+`F8` type with `unsafe` inside, because `std::simd` is still nightly-only.
+
+`broadphase` ports `aabb_tree.cpp` and `broad_phase.cpp`: each frame refits
+the fat bounds that no longer hold, reinserts those leaves with the tree's
+rotations, queries the moved proxies against the dynamic and static trees,
+records new pairs in a hash map keyed by shape pair, and drops pairs whose fat
+bounds parted. `gas` ports the particle system's gas solver: a sorted spatial
+hash searched with `lower_bound` for pressure and viscosity, and moving boxes
+that stir and push particles.
+
+`world` and `world4` run the engine's whole fixed step for bodies of one box:
+body changes and waking, proxy refits, pair finding, box collision with
+contact recycling, contacts beginning and ending touching with island linking,
+merging and graph colouring, the eight-lane solver, and the sleep pass that
+splits islands and puts resting ones to sleep. 144 piles of six boxes settle
+and fall asleep; 36 tumbling boxes land on sleeping piles and wake them; a
+shove at step 45 wakes every eighth pile. `world4` must produce the same bits
+as `world`. Each language ports the engine's spinning task pool rather than
+reaching for a library, and uses its standard hash map for the contact index:
+`std::unordered_map`, `std.AutoHashMap`, `rustc_hash::FxHashMap` (Rust's
+default SipHash map is built to resist hash flooding, not for speed), and a
+hand-written open-addressing map in C. Where the engine writes shared state
+from several threads under an invariant the compiler cannot check (colours
+touch disjoint bodies, collide blocks own disjoint contacts), Rust needs
+`unsafe`.
 
 ## Rules
 
@@ -69,6 +114,7 @@ engine's `math.cpp`, `ray_cast.cpp` and `box_collision.cpp` into a shared
 - `-O3 -march=native -ffp-contract=off` for C and C++; `ReleaseFast` on the native CPU for Zig; `opt-level = 3`, fat LTO, one codegen unit and `-C target-cpu=native` for Rust.
 - Operations are written in the same order in all four sources.
 - Rust keeps its bounds checks and its overflow semantics; that is what idiomatic means here.
+- SIMD min and max are selects (`a > b ? a : b`), which is exactly what MAXPS and MINPS compute, so every lane rounds the same in every language.
 - Only `+ - * /` and `sqrt` touch floats: `sin`, `acos` and `tan` differ in the last bit between glibc and Zig's own libm, so `slerp` is left out and `perspective` takes the tangent precomputed.
 - Floats are folded into the checksum by bit pattern. A mismatch across languages or repetitions aborts the run.
 - Each round rotates which executable runs first.
@@ -98,10 +144,10 @@ name min_ns median_ns checksum_hex
 ## Layout
 
 ```
-c/src/      one .c and .h per kernel; hash, clock, alloc, vecmath and harness shared
-cpp/src/    one .cpp and .hpp per kernel; hash, clock, vecmath and harness shared
-zig/src/    one .zig per kernel; hash, vecmath and harness shared; build.zig alongside
-rust/src/   one .rs per kernel; hash, vecmath and harness shared; Cargo.toml alongside
+c/src/      one .c and .h per kernel and per engine module; hash, clock, alloc, vecmath and harness shared
+cpp/src/    one .cpp and .hpp per kernel and per engine module; hash, clock, vecmath, simd and harness shared
+zig/src/    one .zig per kernel and per engine module; hash, vecmath and harness shared; build.zig alongside
+rust/src/   one .rs per kernel and per engine module; hash, vecmath, simd and harness shared; Cargo.toml alongside
 run.py      builds, interleaves, verifies checksums, writes results/
 Makefile    the build flags
 results/    the last run

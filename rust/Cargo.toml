@@ -12,3 +12,6 @@ opt-level = 3
 lto = "fat"
 codegen-units = 1
 panic = "abort"
+
+[dependencies]
+rustc-hash = "2.1.3"

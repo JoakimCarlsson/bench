@@ -2,6 +2,7 @@
 #define BENCH_VECMATH_H
 
 #include <math.h>
+#include <stdbool.h>
 
 #include "hash.h"
 
@@ -16,6 +17,8 @@ typedef struct { Vec3 x, y, z; } Basis;
 typedef struct { Basis basis; Vec3 origin; } Transform;
 /// Oriented box: half extents along the basis columns, around a centre.
 typedef struct { Vec3 half_extents; Vec3 center; Basis basis; } BoxPose;
+/// Axis-aligned box by its corners.
+typedef struct { Vec3 min; Vec3 max; } Aabb;
 /// Column-major 4x4 matrix.
 typedef struct { float m[16]; } Mat4;
 
@@ -47,6 +50,16 @@ static inline Vec3 basis_apply(const Basis* b, Vec3 v) {
     return v3_add(v3_add(v3_scale(b->x, v.x), v3_scale(b->y, v.y)), v3_scale(b->z, v.z));
 }
 
+/// Every column scaled.
+static inline Basis basis_scaled(const Basis* a, float s) {
+    return (Basis){ v3_scale(a->x, s), v3_scale(a->y, s), v3_scale(a->z, s) };
+}
+
+/// Column-wise sum.
+static inline Basis basis_add(const Basis* a, const Basis* b) {
+    return (Basis){ v3_add(a->x, b->x), v3_add(a->y, b->y), v3_add(a->z, b->z) };
+}
+
 /// Swap rows and columns.
 static inline Basis basis_transposed(const Basis* b) {
     return (Basis){ { b->x.x, b->y.x, b->z.x }, { b->x.y, b->y.y, b->z.y }, { b->x.z, b->y.z, b->z.z } };
@@ -74,6 +87,69 @@ static inline float quat_dot(Quat a, Quat b) { return a.x * b.x + a.y * b.y + a.
 /// Compose two transforms; the result applies `b` first, then `a`.
 static inline Transform transform_mul(const Transform* a, const Transform* b) {
     return (Transform){ basis_mul(&a->basis, &b->basis), v3_add(basis_apply(&a->basis, b->origin), a->origin) };
+}
+
+/// Identity basis.
+static inline Basis basis_identity(void) {
+    return (Basis){ { 1.0f, 0.0f, 0.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f, 0.0f, 1.0f } };
+}
+
+/// Identity rotation.
+static inline Quat quat_identity(void) { return (Quat){ 0.0f, 0.0f, 0.0f, 1.0f }; }
+
+/// Identity transform.
+static inline Transform transform_identity(void) { return (Transform){ basis_identity(), { 0.0f, 0.0f, 0.0f } }; }
+
+/// A point moved by a transform.
+static inline Vec3 transform_point(const Transform* t, Vec3 p) { return v3_add(basis_apply(&t->basis, p), t->origin); }
+
+/// Larger of two floats as `std::max` picks it: the first on a tie.
+static inline float f32_max(float a, float b) { return a < b ? b : a; }
+/// Smaller of two floats as `std::min` picks it: the first on a tie.
+static inline float f32_min(float a, float b) { return b < a ? b : a; }
+/// `v` limited to [lo, hi] as `std::clamp` does it.
+static inline float f32_clamp(float v, float lo, float hi) { return v < lo ? lo : hi < v ? hi : v; }
+/// Largest of three floats as `std::max` of an initializer list picks it.
+static inline float f32_max3(float a, float b, float c) { return f32_max(f32_max(a, b), c); }
+
+/// Component-wise minimum.
+static inline Vec3 v3_min(Vec3 a, Vec3 b) {
+    return (Vec3){ a.x < b.x ? a.x : b.x, a.y < b.y ? a.y : b.y, a.z < b.z ? a.z : b.z };
+}
+/// Component-wise maximum.
+static inline Vec3 v3_max(Vec3 a, Vec3 b) {
+    return (Vec3){ a.x > b.x ? a.x : b.x, a.y > b.y ? a.y : b.y, a.z > b.z ? a.z : b.z };
+}
+/// Component-wise absolute value.
+static inline Vec3 v3_abs(Vec3 a) {
+    return (Vec3){ a.x < 0.0f ? -a.x : a.x, a.y < 0.0f ? -a.y : a.y, a.z < 0.0f ? -a.z : a.z };
+}
+
+/// Whether two boxes overlap, touching included.
+static inline bool aabb_overlaps(const Aabb* a, const Aabb* b) {
+    return a->min.x <= b->max.x && a->max.x >= b->min.x && a->min.y <= b->max.y && a->max.y >= b->min.y &&
+           a->min.z <= b->max.z && a->max.z >= b->min.z;
+}
+
+/// Whether `outer` fully contains `inner`.
+static inline bool aabb_contains(const Aabb* outer, const Aabb* inner) {
+    return outer->min.x <= inner->min.x && outer->min.y <= inner->min.y && outer->min.z <= inner->min.z &&
+           outer->max.x >= inner->max.x && outer->max.y >= inner->max.y && outer->max.z >= inner->max.z;
+}
+
+/// Smallest box containing both.
+static inline Aabb aabb_merge(const Aabb* a, const Aabb* b) { return (Aabb){ v3_min(a->min, b->min), v3_max(a->max, b->max) }; }
+
+/// The box expanded by `margin` on every side.
+static inline Aabb aabb_grow(const Aabb* box, float margin) {
+    Vec3 m = { margin, margin, margin };
+    return (Aabb){ v3_sub(box->min, m), v3_add(box->max, m) };
+}
+
+/// Total surface area.
+static inline float aabb_surface_area(const Aabb* box) {
+    Vec3 d = v3_sub(box->max, box->min);
+    return 2.0f * (d.x * d.y + d.y * d.z + d.z * d.x);
 }
 
 /// Uniform in [lo, hi) on each axis, drawn x, then y, then z.

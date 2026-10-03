@@ -48,6 +48,10 @@ struct Basis {
 
 /// Transform a vector by a basis.
 constexpr Vec3 operator*(const Basis& b, Vec3 v) { return b.x * v.x + b.y * v.y + b.z * v.z; }
+/// Every column scaled.
+constexpr Basis operator*(const Basis& a, float s) { return {a.x * s, a.y * s, a.z * s}; }
+/// Column-wise sum.
+constexpr Basis operator+(const Basis& a, const Basis& b) { return {a.x + b.x, a.y + b.y, a.z + b.z}; }
 /// Compose two bases; the result applies `b` first, then `a`.
 constexpr Basis operator*(const Basis& a, const Basis& b) { return {a * b.x, a * b.y, a * b.z}; }
 
@@ -86,6 +90,49 @@ struct Transform {
 constexpr Transform operator*(const Transform& a, const Transform& b) {
     return {a.basis * b.basis, a.basis * b.origin + a.origin};
 }
+
+/// Component-wise minimum.
+constexpr Vec3 min(Vec3 a, Vec3 b) { return {a.x < b.x ? a.x : b.x, a.y < b.y ? a.y : b.y, a.z < b.z ? a.z : b.z}; }
+/// Component-wise maximum.
+constexpr Vec3 max(Vec3 a, Vec3 b) { return {a.x > b.x ? a.x : b.x, a.y > b.y ? a.y : b.y, a.z > b.z ? a.z : b.z}; }
+/// Component-wise absolute value.
+constexpr Vec3 abs(Vec3 a) { return {a.x < 0.0f ? -a.x : a.x, a.y < 0.0f ? -a.y : a.y, a.z < 0.0f ? -a.z : a.z}; }
+
+/// Axis-aligned box by its corners.
+struct Aabb {
+    Vec3 min{};
+    Vec3 max{};
+};
+
+/// Whether two boxes overlap, touching included.
+constexpr bool overlaps(const Aabb& a, const Aabb& b) {
+    return a.min.x <= b.max.x && a.max.x >= b.min.x && a.min.y <= b.max.y && a.max.y >= b.min.y && a.min.z <= b.max.z &&
+           a.max.z >= b.min.z;
+}
+
+/// Whether `outer` fully contains `inner`.
+constexpr bool contains(const Aabb& outer, const Aabb& inner) {
+    return outer.min.x <= inner.min.x && outer.min.y <= inner.min.y && outer.min.z <= inner.min.z &&
+           outer.max.x >= inner.max.x && outer.max.y >= inner.max.y && outer.max.z >= inner.max.z;
+}
+
+/// Smallest box containing both.
+constexpr Aabb merge(const Aabb& a, const Aabb& b) { return {min(a.min, b.min), max(a.max, b.max)}; }
+
+/// The box expanded by `margin` on every side.
+constexpr Aabb grow(const Aabb& box, float margin) {
+    const Vec3 m{margin, margin, margin};
+    return {box.min - m, box.max + m};
+}
+
+/// Total surface area.
+constexpr float surface_area(const Aabb& box) {
+    const Vec3 d = box.max - box.min;
+    return 2.0f * (d.x * d.y + d.y * d.z + d.z * d.x);
+}
+
+/// A point moved by a transform.
+constexpr Vec3 transform_point(const Transform& t, Vec3 p) { return t.basis * p + t.origin; }
 
 /// Oriented box: half extents along the basis columns, around a centre.
 struct BoxPose {

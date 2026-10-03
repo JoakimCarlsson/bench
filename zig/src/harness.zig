@@ -4,9 +4,10 @@ const std = @import("std");
 /// Initialise a `Case`, run it `warmup + reps` times, deinitialise it, and
 /// print one line: `name min_ns median_ns checksum_hex`.
 ///
-/// A `Case` declares `name`, `init(gpa) !Case`, `run(*Case) u64` and
-/// `deinit(*Case, gpa) void`. `run` must be deterministic; a checksum that
-/// changes between repetitions is `error.Nondeterministic`.
+/// A `Case` declares `name`, `init(gpa) !Case` or `init(gpa, io) !Case`,
+/// `run(*Case) u64` or `run(*Case) !u64`, and `deinit(*Case, gpa) void`.
+/// `run` must be deterministic; a checksum that changes between repetitions
+/// is `error.Nondeterministic`.
 pub fn runCase(
     comptime Case: type,
     gpa: std.mem.Allocator,
@@ -14,7 +15,7 @@ pub fn runCase(
     reps: usize,
     warmup: usize,
 ) !void {
-    var case = try Case.init(gpa);
+    var case = try initCase(Case, gpa, io);
     defer case.deinit(gpa);
 
     const times = try gpa.alloc(u64, reps);
@@ -23,7 +24,7 @@ pub fn runCase(
     var checksum: u64 = 0;
     for (0..warmup + reps) |i| {
         const t0 = now(io);
-        const sum = case.run();
+        const sum = try runOnce(&case);
         const t1 = now(io);
         if (i == 0) {
             checksum = sum;
@@ -43,6 +44,17 @@ pub fn runCase(
         checksum,
     });
     try std.Io.File.stdout().writeStreamingAll(io, line);
+}
+
+/// `Case.init(gpa, io)` for a case that runs threads, else `Case.init(gpa)`.
+fn initCase(comptime Case: type, gpa: std.mem.Allocator, io: std.Io) !Case {
+    if (@typeInfo(@TypeOf(Case.init)).@"fn".params.len == 2) return Case.init(gpa, io);
+    return Case.init(gpa);
+}
+
+/// One call of `run`, which may return `u64` or an error union of it.
+fn runOnce(case: anytype) !u64 {
+    return case.run();
 }
 
 /// Monotonic nanoseconds from an unspecified origin.

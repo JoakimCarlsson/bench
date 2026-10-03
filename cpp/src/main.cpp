@@ -2,12 +2,14 @@
 #include <cstdlib>
 
 #include "boxbox.hpp"
+#include "broadphase.hpp"
 #include "bvh.hpp"
 #include "chunkmap.hpp"
 #include "colour.hpp"
 #include "dda.hpp"
 #include "decompose.hpp"
 #include "flood.hpp"
+#include "gas.hpp"
 #include "harness.hpp"
 #include "integrate.hpp"
 #include "islands.hpp"
@@ -21,6 +23,8 @@
 #include "sweep.hpp"
 #include "transform.hpp"
 #include "unproject.hpp"
+#include "wide.hpp"
+#include "world.hpp"
 
 namespace {
 
@@ -41,5 +45,5 @@ int main(int argc, char** argv) {
         return 1;
     }
     using namespace bench;
-    return run_all<Dda, Flood, Surface, Mips, Mass, Sweep, Bvh, Islands, Colour, Solve, Integrate, Transform, Unproject, Decompose, Raycast, BoxBox, SlotMap, ChunkMap, Sort>(reps, warmup);
+    return run_all<Dda, Flood, Surface, Mips, Mass, Sweep, Bvh, Islands, Colour, Solve, Integrate, Transform, Unproject, Decompose, Raycast, BoxBox, Wide, BroadPhaseCase, Gas, WorldCase<1>, WorldCase<4>, SlotMap, ChunkMap, Sort>(reps, warmup);
 }
