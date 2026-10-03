@@ -1,0 +1,333 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="642" height="942" viewBox="0 0 642 942" role="img">
+<title>Time per kernel, relative to the fastest language</title>
+<rect width="642" height="942" rx="8" fill="#1a1a19"/>
+<text x="24.0" y="32.0" fill="#ffffff" font-size="17" font-weight="600" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Time per kernel, relative to the fastest language</text>
+<text x="24.0" y="54.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Each cell: median milliseconds and slowdown. Darker is slower; the scale stops at 2x.</text>
+<text x="190.0" y="90.0" fill="#ffffff" font-size="14" font-weight="600" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">C</text>
+<text x="312.0" y="90.0" fill="#ffffff" font-size="14" font-weight="600" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">C++</text>
+<text x="434.0" y="90.0" fill="#ffffff" font-size="14" font-weight="600" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Zig</text>
+<text x="556.0" y="90.0" fill="#ffffff" font-size="14" font-weight="600" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">Rust</text>
+<text x="118.0" y="124.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">dda</text>
+<rect x="130" y="104" width="120" height="30" rx="4" fill="#232a33"><title>dda, C: 5.07 ms, 1.00x</title></rect>
+<text x="140.0" y="124.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">5.1 ms</text>
+<text x="240.0" y="124.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.00x</text>
+<rect x="252" y="104" width="120" height="30" rx="4" fill="#232a33"><title>dda, C++: 5.14 ms, 1.02x</title></rect>
+<text x="262.0" y="124.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">5.1 ms</text>
+<text x="362.0" y="124.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.02x</text>
+<rect x="374" y="104" width="120" height="30" rx="4" fill="#232a33"><title>dda, Zig: 5.06 ms, 1.00x</title></rect>
+<text x="384.0" y="124.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">5.1 ms</text>
+<text x="484.0" y="124.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="104" width="120" height="30" rx="4" fill="#232a33"><title>dda, Rust: 5.34 ms, 1.06x</title></rect>
+<text x="506.0" y="124.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">5.3 ms</text>
+<text x="606.0" y="124.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.06x</text>
+<text x="118.0" y="156.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">flood</text>
+<rect x="130" y="136" width="120" height="30" rx="4" fill="#232a33"><title>flood, C: 16.02 ms, 1.01x</title></rect>
+<text x="140.0" y="156.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.0 ms</text>
+<text x="240.0" y="156.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<rect x="252" y="136" width="120" height="30" rx="4" fill="#232a33"><title>flood, C++: 15.81 ms, 1.00x</title></rect>
+<text x="262.0" y="156.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">15.8 ms</text>
+<text x="362.0" y="156.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="374" y="136" width="120" height="30" rx="4" fill="#232a33"><title>flood, Zig: 16.63 ms, 1.05x</title></rect>
+<text x="384.0" y="156.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.6 ms</text>
+<text x="484.0" y="156.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<rect x="496" y="136" width="120" height="30" rx="4" fill="#0d366b"><title>flood, Rust: 17.32 ms, 1.10x</title></rect>
+<text x="506.0" y="156.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">17.3 ms</text>
+<text x="606.0" y="156.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.10x</text>
+<text x="118.0" y="188.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">surface</text>
+<rect x="130" y="168" width="120" height="30" rx="4" fill="#0d366b"><title>surface, C: 8.94 ms, 1.17x</title></rect>
+<text x="140.0" y="188.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">8.9 ms</text>
+<text x="240.0" y="188.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.17x</text>
+<rect x="252" y="168" width="120" height="30" rx="4" fill="#0d366b"><title>surface, C++: 9.19 ms, 1.20x</title></rect>
+<text x="262.0" y="188.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.2 ms</text>
+<text x="362.0" y="188.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.20x</text>
+<rect x="374" y="168" width="120" height="30" rx="4" fill="#232a33"><title>surface, Zig: 7.63 ms, 1.00x</title></rect>
+<text x="384.0" y="188.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.6 ms</text>
+<text x="484.0" y="188.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="168" width="120" height="30" rx="4" fill="#3987e5"><title>surface, Rust: 11.81 ms, 1.55x</title></rect>
+<text x="506.0" y="188.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.8 ms</text>
+<text x="606.0" y="188.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.55x</text>
+<text x="118.0" y="220.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">mips</text>
+<rect x="130" y="200" width="120" height="30" rx="4" fill="#232a33"><title>mips, C: 8.47 ms, 1.01x</title></rect>
+<text x="140.0" y="220.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">8.5 ms</text>
+<text x="240.0" y="220.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<rect x="252" y="200" width="120" height="30" rx="4" fill="#232a33"><title>mips, C++: 8.36 ms, 1.00x</title></rect>
+<text x="262.0" y="220.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">8.4 ms</text>
+<text x="362.0" y="220.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="374" y="200" width="120" height="30" rx="4" fill="#184f95"><title>mips, Zig: 11.12 ms, 1.33x</title></rect>
+<text x="384.0" y="220.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.1 ms</text>
+<text x="484.0" y="220.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.33x</text>
+<rect x="496" y="200" width="120" height="30" rx="4" fill="#184f95"><title>mips, Rust: 10.50 ms, 1.26x</title></rect>
+<text x="506.0" y="220.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">10.5 ms</text>
+<text x="606.0" y="220.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.26x</text>
+<text x="118.0" y="252.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">mass</text>
+<rect x="130" y="232" width="120" height="30" rx="4" fill="#0d366b"><title>mass, C: 11.48 ms, 1.17x</title></rect>
+<text x="140.0" y="252.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.5 ms</text>
+<text x="240.0" y="252.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.17x</text>
+<rect x="252" y="232" width="120" height="30" rx="4" fill="#232a33"><title>mass, C++: 9.85 ms, 1.00x</title></rect>
+<text x="262.0" y="252.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.8 ms</text>
+<text x="362.0" y="252.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="374" y="232" width="120" height="30" rx="4" fill="#0d366b"><title>mass, Zig: 10.78 ms, 1.09x</title></rect>
+<text x="384.0" y="252.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">10.8 ms</text>
+<text x="484.0" y="252.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.09x</text>
+<rect x="496" y="232" width="120" height="30" rx="4" fill="#256abf"><title>mass, Rust: 13.77 ms, 1.40x</title></rect>
+<text x="506.0" y="252.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.8 ms</text>
+<text x="606.0" y="252.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.40x</text>
+<text x="118.0" y="284.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sweep</text>
+<rect x="130" y="264" width="120" height="30" rx="4" fill="#184f95"><title>sweep, C: 7.83 ms, 1.28x</title></rect>
+<text x="140.0" y="284.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.8 ms</text>
+<text x="240.0" y="284.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.28x</text>
+<rect x="252" y="264" width="120" height="30" rx="4" fill="#0d366b"><title>sweep, C++: 7.40 ms, 1.21x</title></rect>
+<text x="262.0" y="284.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.4 ms</text>
+<text x="362.0" y="284.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.21x</text>
+<rect x="374" y="264" width="120" height="30" rx="4" fill="#0d366b"><title>sweep, Zig: 7.12 ms, 1.16x</title></rect>
+<text x="384.0" y="284.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.1 ms</text>
+<text x="484.0" y="284.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.16x</text>
+<rect x="496" y="264" width="120" height="30" rx="4" fill="#232a33"><title>sweep, Rust: 6.13 ms, 1.00x</title></rect>
+<text x="506.0" y="284.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">6.1 ms</text>
+<text x="606.0" y="284.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="316.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">bvh</text>
+<rect x="130" y="296" width="120" height="30" rx="4" fill="#232a33"><title>bvh, C: 16.85 ms, 1.05x</title></rect>
+<text x="140.0" y="316.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.9 ms</text>
+<text x="240.0" y="316.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<rect x="252" y="296" width="120" height="30" rx="4" fill="#232a33"><title>bvh, C++: 16.46 ms, 1.02x</title></rect>
+<text x="262.0" y="316.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.5 ms</text>
+<text x="362.0" y="316.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.02x</text>
+<rect x="374" y="296" width="120" height="30" rx="4" fill="#232a33"><title>bvh, Zig: 16.22 ms, 1.01x</title></rect>
+<text x="384.0" y="316.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.2 ms</text>
+<text x="484.0" y="316.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<rect x="496" y="296" width="120" height="30" rx="4" fill="#232a33"><title>bvh, Rust: 16.12 ms, 1.00x</title></rect>
+<text x="506.0" y="316.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.1 ms</text>
+<text x="606.0" y="316.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="348.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">islands</text>
+<rect x="130" y="328" width="120" height="30" rx="4" fill="#232a33"><title>islands, C: 2.08 ms, 1.04x</title></rect>
+<text x="140.0" y="348.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2.1 ms</text>
+<text x="240.0" y="348.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.04x</text>
+<rect x="252" y="328" width="120" height="30" rx="4" fill="#232a33"><title>islands, C++: 2.06 ms, 1.02x</title></rect>
+<text x="262.0" y="348.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2.1 ms</text>
+<text x="362.0" y="348.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.02x</text>
+<rect x="374" y="328" width="120" height="30" rx="4" fill="#232a33"><title>islands, Zig: 2.01 ms, 1.00x</title></rect>
+<text x="384.0" y="348.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2.0 ms</text>
+<text x="484.0" y="348.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="328" width="120" height="30" rx="4" fill="#0d366b"><title>islands, Rust: 2.25 ms, 1.12x</title></rect>
+<text x="506.0" y="348.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2.3 ms</text>
+<text x="606.0" y="348.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.12x</text>
+<text x="118.0" y="380.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">colour</text>
+<rect x="130" y="360" width="120" height="30" rx="4" fill="#0d366b"><title>colour, C: 1.98 ms, 1.19x</title></rect>
+<text x="140.0" y="380.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2.0 ms</text>
+<text x="240.0" y="380.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.19x</text>
+<rect x="252" y="360" width="120" height="30" rx="4" fill="#0d366b"><title>colour, C++: 1.97 ms, 1.19x</title></rect>
+<text x="262.0" y="380.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2.0 ms</text>
+<text x="362.0" y="380.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.19x</text>
+<rect x="374" y="360" width="120" height="30" rx="4" fill="#232a33"><title>colour, Zig: 1.75 ms, 1.05x</title></rect>
+<text x="384.0" y="380.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.7 ms</text>
+<text x="484.0" y="380.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<rect x="496" y="360" width="120" height="30" rx="4" fill="#232a33"><title>colour, Rust: 1.66 ms, 1.00x</title></rect>
+<text x="506.0" y="380.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.7 ms</text>
+<text x="606.0" y="380.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="412.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">solve</text>
+<rect x="130" y="392" width="120" height="30" rx="4" fill="#232a33"><title>solve, C: 13.59 ms, 1.01x</title></rect>
+<text x="140.0" y="412.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.6 ms</text>
+<text x="240.0" y="412.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<rect x="252" y="392" width="120" height="30" rx="4" fill="#232a33"><title>solve, C++: 13.42 ms, 1.00x</title></rect>
+<text x="262.0" y="412.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.4 ms</text>
+<text x="362.0" y="412.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.00x</text>
+<rect x="374" y="392" width="120" height="30" rx="4" fill="#184f95"><title>solve, Zig: 16.67 ms, 1.24x</title></rect>
+<text x="384.0" y="412.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">16.7 ms</text>
+<text x="484.0" y="412.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.24x</text>
+<rect x="496" y="392" width="120" height="30" rx="4" fill="#232a33"><title>solve, Rust: 13.41 ms, 1.00x</title></rect>
+<text x="506.0" y="412.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.4 ms</text>
+<text x="606.0" y="412.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="444.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">integrate</text>
+<rect x="130" y="424" width="120" height="30" rx="4" fill="#256abf"><title>integrate, C: 10.25 ms, 1.44x</title></rect>
+<text x="140.0" y="444.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">10.2 ms</text>
+<text x="240.0" y="444.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.44x</text>
+<rect x="252" y="424" width="120" height="30" rx="4" fill="#0d366b"><title>integrate, C++: 8.58 ms, 1.20x</title></rect>
+<text x="262.0" y="444.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">8.6 ms</text>
+<text x="362.0" y="444.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.20x</text>
+<rect x="374" y="424" width="120" height="30" rx="4" fill="#232a33"><title>integrate, Zig: 7.14 ms, 1.00x</title></rect>
+<text x="384.0" y="444.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.1 ms</text>
+<text x="484.0" y="444.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="424" width="120" height="30" rx="4" fill="#256abf"><title>integrate, Rust: 10.01 ms, 1.40x</title></rect>
+<text x="506.0" y="444.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">10.0 ms</text>
+<text x="606.0" y="444.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.40x</text>
+<text x="118.0" y="476.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">transform</text>
+<rect x="130" y="456" width="120" height="30" rx="4" fill="#184f95"><title>transform, C: 11.98 ms, 1.22x</title></rect>
+<text x="140.0" y="476.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">12.0 ms</text>
+<text x="240.0" y="476.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.22x</text>
+<rect x="252" y="456" width="120" height="30" rx="4" fill="#184f95"><title>transform, C++: 11.97 ms, 1.22x</title></rect>
+<text x="262.0" y="476.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">12.0 ms</text>
+<text x="362.0" y="476.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.22x</text>
+<rect x="374" y="456" width="120" height="30" rx="4" fill="#232a33"><title>transform, Zig: 9.80 ms, 1.00x</title></rect>
+<text x="384.0" y="476.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.8 ms</text>
+<text x="484.0" y="476.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="456" width="120" height="30" rx="4" fill="#0d366b"><title>transform, Rust: 11.39 ms, 1.16x</title></rect>
+<text x="506.0" y="476.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.4 ms</text>
+<text x="606.0" y="476.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.16x</text>
+<text x="118.0" y="508.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">unproject</text>
+<rect x="130" y="488" width="120" height="30" rx="4" fill="#256abf"><title>unproject, C: 9.75 ms, 1.39x</title></rect>
+<text x="140.0" y="508.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.7 ms</text>
+<text x="240.0" y="508.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.39x</text>
+<rect x="252" y="488" width="120" height="30" rx="4" fill="#184f95"><title>unproject, C++: 9.39 ms, 1.34x</title></rect>
+<text x="262.0" y="508.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.4 ms</text>
+<text x="362.0" y="508.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.34x</text>
+<rect x="374" y="488" width="120" height="30" rx="4" fill="#232a33"><title>unproject, Zig: 7.01 ms, 1.00x</title></rect>
+<text x="384.0" y="508.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.0 ms</text>
+<text x="484.0" y="508.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="488" width="120" height="30" rx="4" fill="#232a33"><title>unproject, Rust: 7.11 ms, 1.01x</title></rect>
+<text x="506.0" y="508.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.1 ms</text>
+<text x="606.0" y="508.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<text x="118.0" y="540.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">decompose</text>
+<rect x="130" y="520" width="120" height="30" rx="4" fill="#184f95"><title>decompose, C: 9.43 ms, 1.31x</title></rect>
+<text x="140.0" y="540.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.4 ms</text>
+<text x="240.0" y="540.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.31x</text>
+<rect x="252" y="520" width="120" height="30" rx="4" fill="#184f95"><title>decompose, C++: 9.09 ms, 1.26x</title></rect>
+<text x="262.0" y="540.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">9.1 ms</text>
+<text x="362.0" y="540.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.26x</text>
+<rect x="374" y="520" width="120" height="30" rx="4" fill="#232a33"><title>decompose, Zig: 7.37 ms, 1.02x</title></rect>
+<text x="384.0" y="540.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.4 ms</text>
+<text x="484.0" y="540.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.02x</text>
+<rect x="496" y="520" width="120" height="30" rx="4" fill="#232a33"><title>decompose, Rust: 7.20 ms, 1.00x</title></rect>
+<text x="506.0" y="540.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.2 ms</text>
+<text x="606.0" y="540.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="572.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">raycast</text>
+<rect x="130" y="552" width="120" height="30" rx="4" fill="#0d366b"><title>raycast, C: 13.22 ms, 1.13x</title></rect>
+<text x="140.0" y="572.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.2 ms</text>
+<text x="240.0" y="572.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.13x</text>
+<rect x="252" y="552" width="120" height="30" rx="4" fill="#0d366b"><title>raycast, C++: 13.00 ms, 1.11x</title></rect>
+<text x="262.0" y="572.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.0 ms</text>
+<text x="362.0" y="572.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.11x</text>
+<rect x="374" y="552" width="120" height="30" rx="4" fill="#232a33"><title>raycast, Zig: 11.75 ms, 1.00x</title></rect>
+<text x="384.0" y="572.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.8 ms</text>
+<text x="484.0" y="572.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="496" y="552" width="120" height="30" rx="4" fill="#0d366b"><title>raycast, Rust: 13.77 ms, 1.17x</title></rect>
+<text x="506.0" y="572.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.8 ms</text>
+<text x="606.0" y="572.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.17x</text>
+<text x="118.0" y="604.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">boxbox</text>
+<rect x="130" y="584" width="120" height="30" rx="4" fill="#0d366b"><title>boxbox, C: 12.26 ms, 1.09x</title></rect>
+<text x="140.0" y="604.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">12.3 ms</text>
+<text x="240.0" y="604.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.09x</text>
+<rect x="252" y="584" width="120" height="30" rx="4" fill="#232a33"><title>boxbox, C++: 11.25 ms, 1.00x</title></rect>
+<text x="262.0" y="604.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.2 ms</text>
+<text x="362.0" y="604.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="374" y="584" width="120" height="30" rx="4" fill="#232a33"><title>boxbox, Zig: 11.89 ms, 1.06x</title></rect>
+<text x="384.0" y="604.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">11.9 ms</text>
+<text x="484.0" y="604.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.06x</text>
+<rect x="496" y="584" width="120" height="30" rx="4" fill="#0d366b"><title>boxbox, Rust: 12.96 ms, 1.15x</title></rect>
+<text x="506.0" y="604.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.0 ms</text>
+<text x="606.0" y="604.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.15x</text>
+<text x="118.0" y="636.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">wide</text>
+<rect x="130" y="616" width="120" height="30" rx="4" fill="#232a33"><title>wide, C: 19.64 ms, 1.00x</title></rect>
+<text x="140.0" y="636.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">19.6 ms</text>
+<text x="240.0" y="636.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="252" y="616" width="120" height="30" rx="4" fill="#232a33"><title>wide, C++: 20.59 ms, 1.05x</title></rect>
+<text x="262.0" y="636.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">20.6 ms</text>
+<text x="362.0" y="636.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<rect x="374" y="616" width="120" height="30" rx="4" fill="#0d366b"><title>wide, Zig: 22.25 ms, 1.13x</title></rect>
+<text x="384.0" y="636.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">22.2 ms</text>
+<text x="484.0" y="636.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.13x</text>
+<rect x="496" y="616" width="120" height="30" rx="4" fill="#232a33"><title>wide, Rust: 19.80 ms, 1.01x</title></rect>
+<text x="506.0" y="636.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">19.8 ms</text>
+<text x="606.0" y="636.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<text x="118.0" y="668.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">broadphase</text>
+<rect x="130" y="648" width="120" height="30" rx="4" fill="#232a33"><title>broadphase, C: 22.63 ms, 1.06x</title></rect>
+<text x="140.0" y="668.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">22.6 ms</text>
+<text x="240.0" y="668.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.06x</text>
+<rect x="252" y="648" width="120" height="30" rx="4" fill="#0d366b"><title>broadphase, C++: 23.09 ms, 1.09x</title></rect>
+<text x="262.0" y="668.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">23.1 ms</text>
+<text x="362.0" y="668.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.09x</text>
+<rect x="374" y="648" width="120" height="30" rx="4" fill="#232a33"><title>broadphase, Zig: 22.08 ms, 1.04x</title></rect>
+<text x="384.0" y="668.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">22.1 ms</text>
+<text x="484.0" y="668.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.04x</text>
+<rect x="496" y="648" width="120" height="30" rx="4" fill="#232a33"><title>broadphase, Rust: 21.28 ms, 1.00x</title></rect>
+<text x="506.0" y="668.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">21.3 ms</text>
+<text x="606.0" y="668.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="700.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">gas</text>
+<rect x="130" y="680" width="120" height="30" rx="4" fill="#184f95"><title>gas, C: 26.37 ms, 1.23x</title></rect>
+<text x="140.0" y="700.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">26.4 ms</text>
+<text x="240.0" y="700.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.23x</text>
+<rect x="252" y="680" width="120" height="30" rx="4" fill="#0d366b"><title>gas, C++: 24.18 ms, 1.13x</title></rect>
+<text x="262.0" y="700.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">24.2 ms</text>
+<text x="362.0" y="700.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.13x</text>
+<rect x="374" y="680" width="120" height="30" rx="4" fill="#256abf"><title>gas, Zig: 29.73 ms, 1.38x</title></rect>
+<text x="384.0" y="700.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">29.7 ms</text>
+<text x="484.0" y="700.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.38x</text>
+<rect x="496" y="680" width="120" height="30" rx="4" fill="#232a33"><title>gas, Rust: 21.48 ms, 1.00x</title></rect>
+<text x="506.0" y="700.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">21.5 ms</text>
+<text x="606.0" y="700.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="732.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">world</text>
+<rect x="130" y="712" width="120" height="30" rx="4" fill="#232a33"><title>world, C: 18.11 ms, 1.00x</title></rect>
+<text x="140.0" y="732.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">18.1 ms</text>
+<text x="240.0" y="732.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="252" y="712" width="120" height="30" rx="4" fill="#232a33"><title>world, C++: 18.83 ms, 1.04x</title></rect>
+<text x="262.0" y="732.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">18.8 ms</text>
+<text x="362.0" y="732.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.04x</text>
+<rect x="374" y="712" width="120" height="30" rx="4" fill="#0d366b"><title>world, Zig: 20.14 ms, 1.11x</title></rect>
+<text x="384.0" y="732.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">20.1 ms</text>
+<text x="484.0" y="732.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.11x</text>
+<rect x="496" y="712" width="120" height="30" rx="4" fill="#232a33"><title>world, Rust: 18.70 ms, 1.03x</title></rect>
+<text x="506.0" y="732.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">18.7 ms</text>
+<text x="606.0" y="732.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.03x</text>
+<text x="118.0" y="764.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">world4</text>
+<rect x="130" y="744" width="120" height="30" rx="4" fill="#232a33"><title>world4, C: 12.50 ms, 1.00x</title></rect>
+<text x="140.0" y="764.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">12.5 ms</text>
+<text x="240.0" y="764.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="252" y="744" width="120" height="30" rx="4" fill="#232a33"><title>world4, C++: 13.05 ms, 1.04x</title></rect>
+<text x="262.0" y="764.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.1 ms</text>
+<text x="362.0" y="764.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.04x</text>
+<rect x="374" y="744" width="120" height="30" rx="4" fill="#0d366b"><title>world4, Zig: 13.56 ms, 1.08x</title></rect>
+<text x="384.0" y="764.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.6 ms</text>
+<text x="484.0" y="764.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.08x</text>
+<rect x="496" y="744" width="120" height="30" rx="4" fill="#232a33"><title>world4, Rust: 13.38 ms, 1.07x</title></rect>
+<text x="506.0" y="764.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">13.4 ms</text>
+<text x="606.0" y="764.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.07x</text>
+<text x="118.0" y="796.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">slotmap</text>
+<rect x="130" y="776" width="120" height="30" rx="4" fill="#232a33"><title>slotmap, C: 24.65 ms, 1.05x</title></rect>
+<text x="140.0" y="796.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">24.6 ms</text>
+<text x="240.0" y="796.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<rect x="252" y="776" width="120" height="30" rx="4" fill="#232a33"><title>slotmap, C++: 23.53 ms, 1.00x</title></rect>
+<text x="262.0" y="796.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">23.5 ms</text>
+<text x="362.0" y="796.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="374" y="776" width="120" height="30" rx="4" fill="#232a33"><title>slotmap, Zig: 24.64 ms, 1.05x</title></rect>
+<text x="384.0" y="796.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">24.6 ms</text>
+<text x="484.0" y="796.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<rect x="496" y="776" width="120" height="30" rx="4" fill="#232a33"><title>slotmap, Rust: 23.80 ms, 1.01x</title></rect>
+<text x="506.0" y="796.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">23.8 ms</text>
+<text x="606.0" y="796.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.01x</text>
+<text x="118.0" y="828.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">chunkmap</text>
+<rect x="130" y="808" width="120" height="30" rx="4" fill="#232a33"><title>chunkmap, C: 25.95 ms, 1.02x</title></rect>
+<text x="140.0" y="828.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">25.9 ms</text>
+<text x="240.0" y="828.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.02x</text>
+<rect x="252" y="808" width="120" height="30" rx="4" fill="#232a33"><title>chunkmap, C++: 25.45 ms, 1.00x</title></rect>
+<text x="262.0" y="828.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">25.5 ms</text>
+<text x="362.0" y="828.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<rect x="374" y="808" width="120" height="30" rx="4" fill="#232a33"><title>chunkmap, Zig: 27.24 ms, 1.07x</title></rect>
+<text x="384.0" y="828.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">27.2 ms</text>
+<text x="484.0" y="828.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.07x</text>
+<rect x="496" y="808" width="120" height="30" rx="4" fill="#232a33"><title>chunkmap, Rust: 26.83 ms, 1.05x</title></rect>
+<text x="506.0" y="828.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">26.8 ms</text>
+<text x="606.0" y="828.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1.05x</text>
+<text x="118.0" y="860.0" fill="#ffffff" font-size="13" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">sort</text>
+<rect x="130" y="840" width="120" height="30" rx="4" fill="#cde2fb"><title>sort, C: 40.98 ms, 7.82x</title></rect>
+<text x="140.0" y="860.0" fill="#0b0b0b" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">41.0 ms</text>
+<text x="240.0" y="860.0" fill="#0b0b0b" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.82x</text>
+<rect x="252" y="840" width="120" height="30" rx="4" fill="#cde2fb"><title>sort, C++: 22.07 ms, 4.21x</title></rect>
+<text x="262.0" y="860.0" fill="#0b0b0b" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">22.1 ms</text>
+<text x="362.0" y="860.0" fill="#0b0b0b" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">4.21x</text>
+<rect x="374" y="840" width="120" height="30" rx="4" fill="#cde2fb"><title>sort, Zig: 38.25 ms, 7.30x</title></rect>
+<text x="384.0" y="860.0" fill="#0b0b0b" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">38.3 ms</text>
+<text x="484.0" y="860.0" fill="#0b0b0b" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">7.30x</text>
+<rect x="496" y="840" width="120" height="30" rx="4" fill="#232a33"><title>sort, Rust: 5.24 ms, 1.00x</title></rect>
+<text x="506.0" y="860.0" fill="#ffffff" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">5.2 ms</text>
+<text x="606.0" y="860.0" fill="#ffffff" font-size="12" font-weight="600" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">fastest</text>
+<text x="118.0" y="909.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">slowdown</text>
+<rect x="130" y="896" width="40" height="18" rx="3" fill="#232a33"/>
+<text x="130.0" y="932.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="start" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">1x</text>
+<rect x="172" y="896" width="40" height="18" rx="3" fill="#0d366b"/>
+<rect x="214" y="896" width="40" height="18" rx="3" fill="#184f95"/>
+<rect x="256" y="896" width="40" height="18" rx="3" fill="#256abf"/>
+<rect x="298" y="896" width="40" height="18" rx="3" fill="#3987e5"/>
+<rect x="340" y="896" width="40" height="18" rx="3" fill="#6da7ec"/>
+<rect x="382" y="896" width="40" height="18" rx="3" fill="#9ec5f4"/>
+<rect x="424" y="896" width="40" height="18" rx="3" fill="#cde2fb"/>
+<text x="464.0" y="932.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="end" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">2x or more</text>
+</svg>

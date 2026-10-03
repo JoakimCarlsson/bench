@@ -9,7 +9,7 @@ a failed comparison, not a data point.
     python run.py --rounds 10
     python run.py --langs c zig
 
-Writes results/latest.md and results/latest.json.
+Writes results/latest.md, results/latest.json and the SVG charts.
 """
 
 from __future__ import annotations
@@ -22,6 +22,8 @@ import platform
 import statistics
 import subprocess
 import sys
+
+import chart
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -179,6 +181,7 @@ def main() -> int:
         ),
         encoding="utf-8",
     )
+    chart.main()
     return 0
 
 

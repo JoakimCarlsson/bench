@@ -11,6 +11,12 @@ rustc 1.98.1. Five interleaved rounds of five repetitions. Median milliseconds
 per repetition, and the median relative to the fastest language for that
 kernel.
 
+![Average slowdown against the fastest language per kernel, by language](results/overview.svg)
+
+![Heatmap of each kernel's time per language, relative to the fastest](results/kernels.svg)
+
+The same numbers as a table:
+
 | kernel    |     C |   C++ |   Zig |  Rust |     C |   C++ |   Zig |  Rust |
 |-----------|------:|------:|------:|------:|------:|------:|------:|------:|
 | dda       |  5.07 |  5.14 |  5.06 |  5.34 | 1.00x | 1.02x | 1.00x | 1.06x |
@@ -149,6 +155,7 @@ cpp/src/    one .cpp and .hpp per kernel and per engine module; hash, clock, vec
 zig/src/    one .zig per kernel and per engine module; hash, vecmath and harness shared; build.zig alongside
 rust/src/   one .rs per kernel and per engine module; hash, vecmath, simd and harness shared; Cargo.toml alongside
 run.py      builds, interleaves, verifies checksums, writes results/
+chart.py    draws results/*.svg from results/latest.json
 Makefile    the build flags
 results/    the last run
 ```
