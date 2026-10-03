@@ -19,8 +19,10 @@ PYTHON ?= python
 
 ifeq ($(OS),Windows_NT)
 EXE := .exe
+LIBM :=
 else
 EXE :=
+LIBM := -lm
 endif
 
 OUT := out
@@ -42,7 +44,7 @@ $(OUT):
 	mkdir -p $(OUT)
 
 $(OUT)/bench_c$(EXE): $(C_SRC) c/src/*.h | $(OUT)
-	$(CC) $(CFLAGS) -o $@ $(C_SRC)
+	$(CC) $(CFLAGS) -o $@ $(C_SRC) $(LIBM)
 
 $(OUT)/bench_cpp$(EXE): $(CPP_SRC) cpp/src/*.hpp | $(OUT)
 	$(CXX) $(CXXFLAGS) -o $@ $(CPP_SRC)

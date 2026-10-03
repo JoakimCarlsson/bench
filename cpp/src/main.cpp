@@ -1,21 +1,26 @@
 #include <cstdio>
 #include <cstdlib>
 
+#include "boxbox.hpp"
 #include "bvh.hpp"
 #include "chunkmap.hpp"
 #include "colour.hpp"
 #include "dda.hpp"
+#include "decompose.hpp"
 #include "flood.hpp"
 #include "harness.hpp"
 #include "integrate.hpp"
 #include "islands.hpp"
 #include "mass.hpp"
 #include "mips.hpp"
+#include "raycast.hpp"
 #include "slotmap.hpp"
 #include "solve.hpp"
 #include "sort.hpp"
 #include "surface.hpp"
 #include "sweep.hpp"
+#include "transform.hpp"
+#include "unproject.hpp"
 
 namespace {
 
@@ -36,5 +41,5 @@ int main(int argc, char** argv) {
         return 1;
     }
     using namespace bench;
-    return run_all<Dda, Flood, Surface, Mips, Mass, Sweep, Bvh, Islands, Colour, Solve, Integrate, SlotMap, ChunkMap, Sort>(reps, warmup);
+    return run_all<Dda, Flood, Surface, Mips, Mass, Sweep, Bvh, Islands, Colour, Solve, Integrate, Transform, Unproject, Decompose, Raycast, BoxBox, SlotMap, ChunkMap, Sort>(reps, warmup);
 }

@@ -1,8 +1,10 @@
 //! Entry point: `bench_rust [reps] [warmup]`, one output line per kernel.
+mod boxbox;
 mod bvh;
 mod chunkmap;
 mod colour;
 mod dda;
+mod decompose;
 mod flood;
 mod harness;
 mod hash;
@@ -10,11 +12,15 @@ mod integrate;
 mod islands;
 mod mass;
 mod mips;
+mod raycast;
 mod slotmap;
 mod solve;
 mod sort;
 mod surface;
 mod sweep;
+mod transform;
+mod unproject;
+mod vecmath;
 
 use harness::run_case;
 use std::process::ExitCode;
@@ -39,6 +45,11 @@ fn main() -> ExitCode {
         && run_case::<colour::Colour>(reps, warmup)
         && run_case::<solve::Solve>(reps, warmup)
         && run_case::<integrate::Integrate>(reps, warmup)
+        && run_case::<transform::Transform>(reps, warmup)
+        && run_case::<unproject::Unproject>(reps, warmup)
+        && run_case::<decompose::Decompose>(reps, warmup)
+        && run_case::<raycast::Raycast>(reps, warmup)
+        && run_case::<boxbox::BoxBox>(reps, warmup)
         && run_case::<slotmap::SlotMap>(reps, warmup)
         && run_case::<chunkmap::ChunkMap>(reps, warmup)
         && run_case::<sort::Sort>(reps, warmup);
