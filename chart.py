@@ -21,6 +21,7 @@ LANGS = ["c", "cpp", "zig", "rust"]
 LABEL = {"c": "C", "cpp": "C++", "zig": "Zig", "rust": "Rust"}
 FONT = "system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
 CAP = 2.0
+LIBRARY_KERNELS = ("sort",)
 
 
 @dataclass(frozen=True)
@@ -124,9 +125,10 @@ def bar_path(x: float, y: float, length: float, thickness: float, radius: float 
 
 def overview(rel: dict[str, dict[str, float]], theme: Theme) -> str:
     """Average slowdown of each language against the fastest per kernel, as bars."""
-    slow = {lang: (geomean([per[lang] for per in rel.values()]) - 1.0) * 100 for lang in LANGS}
-    wins = {lang: sum(1 for per in rel.values() if per[lang] == min(per.values())) for lang in LANGS}
-    kernels = len(rel)
+    code = {case: per for case, per in rel.items() if case not in LIBRARY_KERNELS}
+    slow = {lang: (geomean([per[lang] for per in code.values()]) - 1.0) * 100 for lang in LANGS}
+    wins = {lang: sum(1 for per in code.values() if per[lang] == min(per.values())) for lang in LANGS}
+    kernels = len(code)
     width, left, right = 720, 150, 90
     top, row, thickness = 78, 44, 22
     height = top + row * len(LANGS) + 40
@@ -134,7 +136,7 @@ def overview(rel: dict[str, dict[str, float]], theme: Theme) -> str:
     scale_max = max(10.0, math.ceil(max(slow.values()) / 10) * 10)
     body = [
         text(24, 32, "Average slowdown against the fastest language", theme.text_primary, 17, weight=600),
-        text(24, 54, f"Geometric mean over {kernels} kernels; 0% would mean fastest on every kernel", theme.text_secondary, 13),
+        text(24, 54, f"Geometric mean over {kernels} kernels, leaving out sort, which times each library's algorithm", theme.text_secondary, 13),
     ]
     for tick in range(0, int(scale_max) + 1, 10 if scale_max <= 50 else 20):
         x = left + plot * tick / scale_max

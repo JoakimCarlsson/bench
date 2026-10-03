@@ -13,6 +13,8 @@ kernel.
 
 ![Average slowdown against the fastest language per kernel, by language](results/overview.svg)
 
+The average leaves out `sort`: it times each standard library's sorting algorithm (`qsort`, introsort, pattern-defeating quicksort), not the compiled code, and its 4x to 8x gaps would swamp everything else.
+
 ![Heatmap of each kernel's time per language, relative to the fastest](results/kernels.svg)
 
 The same numbers as a table:
